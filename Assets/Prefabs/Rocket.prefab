@@ -370,6 +370,7 @@ MonoBehaviour:
   _heightTargetForZRotation: 200
   _acceleration: 1
   _destroyTime: 10
+  _nextStagePrefab: {fileID: 179579539854348187, guid: e8d58832c95ad5d40888e659a7f6f1ba, type: 3}
 --- !u!1 &8810053002190507763
 GameObject:
   m_ObjectHideFlags: 0

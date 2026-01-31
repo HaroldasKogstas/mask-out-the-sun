@@ -17,6 +17,9 @@ public class Rocket : MonoBehaviour
 
     [SerializeField]
     private float _destroyTime;
+
+    [SerializeField]
+    private DysonPartInRocket _nextStagePrefab;
     
     private bool _isActive;
 
@@ -39,15 +42,23 @@ public class Rocket : MonoBehaviour
         if(!_isActive)        
             return;
 
+        if(transform.position.y >= 4)
+            return;
+
         _speed += _acceleration * Time.deltaTime;
+
         
         transform.Translate(_speed * Time.deltaTime * Vector3.up);
+
     }
 
     IEnumerator DestroyCoroutine()
     {
         yield return new WaitForSeconds(_destroyTime);
 
+        DysonPartInRocket nextStage = Instantiate(_nextStagePrefab, transform.position, Quaternion.identity);
+
+        nextStage.Initialize();
         Destroy(gameObject);
     }
 }

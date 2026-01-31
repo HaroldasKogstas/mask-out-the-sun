@@ -29,6 +29,10 @@ public class RocketLauncher : MonoBehaviour
     }
 
     [Button("Launch rocket")]
+    void TriggerEvent()
+    {
+        _launchRocket.RaiseEvent();
+    }
     void LaunchRocket()
     {
         Transform launchSite = _launchSites[UnityEngine.Random.Range(0, _launchSites.Count)];

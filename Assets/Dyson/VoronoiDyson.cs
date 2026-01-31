@@ -22,4 +22,9 @@ public class VoronoiDyson : DysonGenerator
             Gizmos.DrawSphere(point, 0.1f);
         }
     }
+
+    protected override void OnDysonPartJourneyStart()
+    {
+        throw new System.NotImplementedException();
+    }
 }

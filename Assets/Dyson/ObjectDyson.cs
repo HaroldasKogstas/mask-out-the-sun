@@ -34,6 +34,8 @@ public class ObjectDyson : DysonGenerator
     [SerializeField]
     float _maxSize = 0.15f;
 
+    private int _nextNotTakenDysonPart;
+
     List<GameObject> _spawnedObjects = new();
     List<int> _spawnOrder = new();
 
@@ -80,7 +82,16 @@ public class ObjectDyson : DysonGenerator
             _spawnedObjects.Add(spawnedObject);
         }
 
+        // Initialize _nextNotTakenDysonPart to match current progress
+        _nextNotTakenDysonPart = Step;
+        
         UpdateObjectsVisibility();
+        
+        // Prepare the next dyson part transform if we haven't reached the end
+        if (_nextNotTakenDysonPart < _spawnOrder.Count)
+        {
+            PrepareNextDysonPartTransform();
+        }
     }
 
     public override void Regenerate()
@@ -90,11 +101,38 @@ public class ObjectDyson : DysonGenerator
 
     void UpdateObjectsVisibility()
     {
+        // Activate objects based on their position in spawn order
         for (int i = 0; i < _spawnedObjects.Count; i++)
         {
             if (_spawnedObjects[i] != null)
             {
-                _spawnedObjects[i].SetActive(i < Step);
+                // Find if this object index appears in the first Step positions of spawn order
+                int positionInSpawnOrder = _spawnOrder.IndexOf(i);
+                _spawnedObjects[i].SetActive(positionInSpawnOrder < Step && positionInSpawnOrder >= 0);
+            }
+        }
+    }
+
+    protected override void OnDysonPartJourneyStart()
+    {
+        // This is called when a DysonPartInRocket is created and needs to know where to go
+        // Increment counter and prepare the next part's transform
+        _nextNotTakenDysonPart++;
+        
+        if (_nextNotTakenDysonPart < _spawnOrder.Count)
+        {
+            PrepareNextDysonPartTransform();
+        }
+    }
+    
+    private void PrepareNextDysonPartTransform()
+    {
+        if (_nextNotTakenDysonPart < _spawnOrder.Count && _nextNotTakenDysonPart < _spawnedObjects.Count)
+        {
+            int actualIndex = _spawnOrder[_nextNotTakenDysonPart];
+            if (actualIndex < _spawnedObjects.Count && _spawnedObjects[actualIndex] != null)
+            {
+                UpdateNextDysonPartTransform(_spawnedObjects[actualIndex].transform);
             }
         }
     }
