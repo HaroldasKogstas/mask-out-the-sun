@@ -148,21 +148,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46af06a0efbe4440ac7786632ab55aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestScript
-  _resources:
-  - _type: 0
-    _amount: 0
-  - _type: 0
-    _amount: 0
+  _resources: []
   _resourceBundle:
     _iron:
       _type: 0
-      _amount: 1
+      _amount: 11
     _tungsten:
       _type: 1
       _amount: 2
     _coal:
       _type: 2
       _amount: 3
+    _tungstenPlate:
+      _type: 3
+      _amount: 0
+    _steelPlate:
+      _type: 4
+      _amount: 0
+    _researchData:
+      _type: 5
+      _amount: 0
+    _surveyData:
+      _type: 6
+      _amount: 0
+  _room: {fileID: 1203813450}
 --- !u!4 &390110157
 Transform:
   m_ObjectHideFlags: 0
@@ -410,6 +419,58 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!1 &1203813449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203813451}
+  - component: {fileID: 1203813450}
+  m_Layer: 0
+  m_Name: Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1203813450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203813449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7ec5df440b96847ba716f51c1ef120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
+  _balanceConfig: {fileID: 11400000, guid: 9eb29c9e91f68fa4ab7f000f7c3ca539, type: 2}
+  _underlyingElement: 0
+  _isBuilt: 0
+  _roomType: 0
+  _tierIndex: 0
+  _smelterRecipe: 0
+  _isRunning: 1
+  _elapsedSeconds: 0
+--- !u!4 &1203813451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203813449}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664003270
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +711,73 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
+--- !u!1 &1765159969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765159971}
+  - component: {fileID: 1765159970}
+  m_Layer: 0
+  m_Name: ResourceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1765159970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765159969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b75bbcf0d618104eaac9e6983a23722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceManager
+  _resources:
+    _iron:
+      _type: 0
+      _amount: 10
+    _tungsten:
+      _type: 1
+      _amount: 10
+    _coal:
+      _type: 2
+      _amount: 10
+    _tungstenPlate:
+      _type: 3
+      _amount: 10
+    _steelPlate:
+      _type: 4
+      _amount: 10
+    _researchData:
+      _type: 5
+      _amount: 10
+    _surveyData:
+      _type: 6
+      _amount: 10
+  _resetOnAwake: 0
+--- !u!4 &1765159971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765159969}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017636737
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,3 +3916,5 @@ SceneRoots:
   - {fileID: 3181794062729261378}
   - {fileID: 2017636740}
   - {fileID: 390110157}
+  - {fileID: 1765159971}
+  - {fileID: 1203813451}

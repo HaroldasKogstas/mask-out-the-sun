@@ -25,4 +25,44 @@ MonoBehaviour:
   _researcherResearchDataOutput: 10
   _assemblerCoalCost: 100
   _assemblerTungstenCost: 1000
-  _balances: []
+  _balances:
+  - _type: 0
+    _buildSteelPlateCost: 10
+    _actionSecondsByTier:
+    - 16
+    - 8
+    - 4
+    - 2
+    _upgradeResearchCostByStep: 
+  - _type: 1
+    _buildSteelPlateCost: 10
+    _actionSecondsByTier:
+    - 16
+    - 8
+    - 4
+    - 2
+    _upgradeResearchCostByStep: 0a00000064000000e8030000
+  - _type: 2
+    _buildSteelPlateCost: 10
+    _actionSecondsByTier:
+    - 16
+    - 8
+    - 4
+    - 2
+    _upgradeResearchCostByStep: 0a00000064000000e8030000
+  - _type: 3
+    _buildSteelPlateCost: 10
+    _actionSecondsByTier:
+    - 16
+    - 8
+    - 4
+    - 2
+    _upgradeResearchCostByStep: 0a00000064000000e8030000
+  - _type: 4
+    _buildSteelPlateCost: 0
+    _actionSecondsByTier:
+    - 16
+    - 8
+    - 4
+    - 2
+    _upgradeResearchCostByStep: 0a00000064000000e8030000
