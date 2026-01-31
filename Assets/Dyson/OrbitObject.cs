@@ -18,7 +18,6 @@ public class OrbitObject : MonoBehaviour
         if (_orbitCenter == null)
             return;
 
-        // Rotate around the orbit center
         transform.RotateAround(_orbitCenter.position, _orbitAxis, _speed * Time.deltaTime);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -58,20 +59,22 @@ public class ObjectDyson : DysonGenerator
         foreach (var index in _spawnOrder)
         {
             var point = points[index];
-            var spawnedObject = Instantiate(_objectToSpawn, point, Quaternion.LookRotation(point.normalized), transform);
+            point = transform.TransformPoint(point);
+            var spawnedObject = Instantiate(_objectToSpawn, point, Quaternion.identity, transform);
 
-            spawnedObject.transform.up = point.normalized;
+            spawnedObject.transform.up = (point - transform.position).normalized;
 
             // Set size (randomized if enabled)
             float size = _randomizeSize ? Random.Range(_minSize, _maxSize) : _objectSize;
             spawnedObject.transform.localScale = Vector3.one * size;
 
-            // Add orbit component if enabled
             if (_orbitObjects)
             {
                 var orbit = spawnedObject.AddComponent<OrbitObject>();
                 float randomSpeed = Random.Range(_orbitSpeedMin, _orbitSpeedMax);
-                orbit.Initialize(randomSpeed, point.normalized, transform);
+                // Use a perpendicular axis for proper orbital motion around the sun
+                Vector3 orbitAxis = Vector3.Cross(point.normalized, Random.onUnitSphere).normalized;
+                orbit.Initialize(randomSpeed, orbitAxis, transform);
             }
             
             _spawnedObjects.Add(spawnedObject);

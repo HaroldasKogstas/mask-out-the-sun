@@ -28,6 +28,7 @@ public static class FibonacciSphere
             float z = Mathf.Cos(inclination);
 
             Vector3 point = new Vector3(x, y, z) * radius;
+            
             points.Add(point);
         }
 
