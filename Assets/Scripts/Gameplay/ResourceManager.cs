@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CheekyStork.ScriptableVariables;
 using UnityEngine;
 
 public sealed class ResourceManager : MonoBehaviour
@@ -15,6 +16,25 @@ public sealed class ResourceManager : MonoBehaviour
     [SerializeField]
     private bool _resetOnAwake = false;
 
+    [SerializeField] private IntSO _ironSO;
+    [SerializeField] private IntSO _tungstenSO;
+    [SerializeField] private IntSO _coalSO;
+    [SerializeField] private IntSO _researchDataSO;
+    [SerializeField] private IntSO _surveyDataSO;
+    [SerializeField] private IntSO _steelPlateSO;
+    [SerializeField] private IntSO _tungstenPlateSO;
+    
+    private void AnnounceResourceChange()
+    {
+        _ironSO.Value = _resources[ResourceType.Iron];
+        _tungstenSO.Value = _resources[ResourceType.Tungsten];
+        _coalSO.Value = _resources[ResourceType.Coal];
+        _researchDataSO.Value = _resources[ResourceType.ResearchData];
+        _surveyDataSO.Value = _resources[ResourceType.SurveyData];
+        _steelPlateSO.Value = _resources[ResourceType.SteelPlate];
+        _tungstenPlateSO.Value = _resources[ResourceType.TungstenPlate];
+    }
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,6 +70,8 @@ public sealed class ResourceManager : MonoBehaviour
 
         _resources[data.Type] = _resources[data.Type] + amount;
         Save();
+
+        AnnounceResourceChange();
     }
 
     public bool TryRemoveResource(ResourceData data)
@@ -75,6 +97,7 @@ public sealed class ResourceManager : MonoBehaviour
 
         _resources[type] = current - amount;
         Save();
+        AnnounceResourceChange();
         return true;
     }
 
@@ -103,6 +126,7 @@ public sealed class ResourceManager : MonoBehaviour
         }
 
         Save();
+        AnnounceResourceChange();
     }
 
     public bool TryRemoveResources(List<ResourceData> datas)
@@ -165,6 +189,7 @@ public sealed class ResourceManager : MonoBehaviour
         _resources[ResourceType.Coal] = _resources[ResourceType.Coal] - coalCost;
 
         Save();
+        AnnounceResourceChange();
         return true;
     }
 
@@ -177,6 +202,7 @@ public sealed class ResourceManager : MonoBehaviour
 
         _resources.Add(bundle);
         Save();
+        AnnounceResourceChange();
     }
 
     public bool TryRemoveResourceBundle(ResourceBundle bundle)
@@ -193,6 +219,7 @@ public sealed class ResourceManager : MonoBehaviour
         }
 
         Save();
+        AnnounceResourceChange();
         return true;
     }
 
@@ -213,6 +240,7 @@ public sealed class ResourceManager : MonoBehaviour
             }
 
             Save();
+            AnnounceResourceChange();
             return;
         }
 
@@ -221,6 +249,7 @@ public sealed class ResourceManager : MonoBehaviour
         {
             _resources = new ResourceBundle();
             Save();
+            AnnounceResourceChange();
             return;
         }
 

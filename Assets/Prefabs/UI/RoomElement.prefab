@@ -393,6 +393,8 @@ GameObject:
   - component: {fileID: 5374961404145226583}
   - component: {fileID: 8233672324940835249}
   - component: {fileID: 8820231778787573346}
+  - component: {fileID: 496776118989371865}
+  - component: {fileID: 3435369785456982156}
   m_Layer: 5
   m_Name: RoomElement
   m_TagString: Untagged
@@ -473,6 +475,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomPopupRequestor
   _popupRequestChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
+--- !u!114 &496776118989371865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210071478522085406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7ec5df440b96847ba716f51c1ef120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
+  _balanceConfig: {fileID: 11400000, guid: 9eb29c9e91f68fa4ab7f000f7c3ca539, type: 2}
+  _underlyingElement: 0
+  _isBuilt: 0
+  _roomType: 0
+  _tierIndex: 0
+  _smelterRecipe: 0
+  _isRunning: 1
+  _elapsedSeconds: 0
+--- !u!114 &3435369785456982156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210071478522085406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a854d99840363584fb9ea0680ce175ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomElement
 --- !u!1 &2650934138237032841
 GameObject:
   m_ObjectHideFlags: 0

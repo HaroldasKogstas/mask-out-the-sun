@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced200f17263cf947a188d406b41419c, type: 3}
+  m_Name: UIConfig
+  m_EditorClassIdentifier: Assembly-CSharp::UIConfig
+  _roomTypeUISets:
+  - _roomType: 0
+    _roomSpriteDefault: {fileID: 21300000, guid: 994af323d9ee3d14996e483bd66805ca, type: 3}
+    _roomIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _roomActiveFrames:
+    - {fileID: 80010400, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -1238910726, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -712182952, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -700501701, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 1058412941, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -1356268381, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 929583879, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 51972246, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -165480701, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -330181104, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 1482327327, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 1934797597, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 223165732, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 491156556, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -1959912158, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 1720346449, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -1844451088, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -58960716, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 1600379361, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -910511176, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 104367147, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: -1396201476, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 305294775, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+    - {fileID: 761036278, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
+  - _roomType: 1
+    _roomSpriteDefault: {fileID: 21300000, guid: 928af67c5196c4041b7d510e3664052a, type: 3}
+    _roomIcon: {fileID: 21300000, guid: 758503e2888a5b949a7865dc81fd939c, type: 3}
+    _roomActiveFrames:
+    - {fileID: 223760426, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -1853419986, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -787497838, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 2070164295, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1240061243, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -2062640409, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -1380106281, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -291324935, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -1795567826, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 117902847, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -1110334887, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1035330863, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1370420107, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1081539465, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -1006679816, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1494056788, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1310544009, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -223907008, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -636471660, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -2098614608, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 1088740964, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -410688606, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: -1991741903, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+    - {fileID: 226231901, guid: 827e6d0af50d8cb41abd8a14de6fa854, type: 3}
+  - _roomType: 2
+    _roomSpriteDefault: {fileID: 21300000, guid: 9c805fc16ed6eb54c814a29732ece77b, type: 3}
+    _roomIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _roomActiveFrames:
+    - {fileID: 416597969, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 939915548, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -163085832, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 1212160183, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -620552622, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -86246937, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 1702213244, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -604393179, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -1648062254, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 2089948592, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 935160072, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -47341614, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 1841871510, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -830289316, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -865906308, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -1595000705, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -1161648100, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 1984400172, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 1560115782, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -1464056413, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -457656408, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: -550519443, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 367159196, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+    - {fileID: 1850605040, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
+  - _roomType: 3
+    _roomSpriteDefault: {fileID: 21300000, guid: 26c04b6e36258b549981fb3e96ebc9f1, type: 3}
+    _roomIcon: {fileID: 21300000, guid: 801ab1229273e0843a594bbe6a1638ae, type: 3}
+    _roomActiveFrames:
+    - {fileID: -1261877471, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 436429337, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -240436430, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1641390028, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -116934516, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1785437475, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1600890366, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1084904837, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -257409236, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1030186690, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 745692597, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 187455144, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -956602395, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -817142968, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1459108729, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -749205116, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -338707127, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 928988102, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -851807046, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -399205079, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1869067536, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1681069445, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1173907390, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1574826494, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 966844480, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1139189536, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1466804382, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -249250414, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 788981224, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: 1826493362, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1655569049, guid: 639b160b68701b8498d983d213189f54, type: 3}
+    - {fileID: -1991933388, guid: 639b160b68701b8498d983d213189f54, type: 3}
+  - _roomType: 4
+    _roomSpriteDefault: {fileID: 21300000, guid: 50a0ff5a5dee33d42aeaf881da5c0d46, type: 3}
+    _roomIcon: {fileID: 21300000, guid: 9346c822dff9a0c47918665f6fb2356b, type: 3}
+    _roomActiveFrames:
+    - {fileID: 1491208683, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 1515998178, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 1509983336, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 96671307, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -1763424336, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 1232155532, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -967260382, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -438365127, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -1428705048, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -1998981063, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -1322935919, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 1043320769, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 575021314, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -1598934844, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 1257589613, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -509205574, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 640370926, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -786639340, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 868519130, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -231487474, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: 521811980, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -364837472, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -1734350995, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+    - {fileID: -466731573, guid: 0842b637d342d294ab8b0dc0d5f28b01, type: 3}
+  _resourceTypeUISets:
+  - _resourceType: 0
+    _resourceIcon: {fileID: 21300000, guid: 242e496f0aa3a274da6f9e25f81bcde4, type: 3}
+    _resourceColor: {r: 0.3019608, g: 0.47843137, b: 0.5294118, a: 1}
+  - _resourceType: 1
+    _resourceIcon: {fileID: 21300000, guid: 242e496f0aa3a274da6f9e25f81bcde4, type: 3}
+    _resourceColor: {r: 0.46408933, g: 0.33530614, b: 0.5188679, a: 1}
+  - _resourceType: 2
+    _resourceIcon: {fileID: 21300000, guid: 242e496f0aa3a274da6f9e25f81bcde4, type: 3}
+    _resourceColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+  - _resourceType: 3
+    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceColor: {r: 0.46666667, g: 0.3372549, b: 0.52156866, a: 1}
+  - _resourceType: 4
+    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceColor: {r: 0.30153078, g: 0.4775006, b: 0.5283019, a: 1}
+  - _resourceType: 5
+    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  - _resourceType: 6
+    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceColor: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}

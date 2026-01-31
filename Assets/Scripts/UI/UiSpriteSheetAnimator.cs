@@ -151,4 +151,11 @@ public sealed class UiSpriteSheetAnimator : MonoBehaviour
             _image.SetNativeSize();
         }
     }
+    
+    public void SetFrames(List<Sprite> frames)
+    {
+        _frames = frames ?? new List<Sprite>();
+        _frameIndex = 0;
+        _accumulator = 0.0f;
+    }
 }

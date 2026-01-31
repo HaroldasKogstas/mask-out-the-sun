@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 639b160b68701b8498d983d213189f54
+guid: 7ab66e4716f88ae4fafa7a2a3c99f69e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -48,11 +48,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: room_upgrader_animated_0
+      name: room_miner_animated_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e80284d2e2fe133469cfc1ac7fa261d9
-      internalID: -1261877471
+      spriteID: 9f3a4e73434d50b4f8c40596a04c59ea
+      internalID: 80010400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_1
+      name: room_miner_animated_1
       rect:
         serializedVersion: 2
-        x: 188
+        x: 257
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 472b3b9aec18275468b0be28d4ee1683
-      internalID: 436429337
+      spriteID: 4408619eea740624baa8747af10e7946
+      internalID: -1238910726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_2
+      name: room_miner_animated_2
       rect:
         serializedVersion: 2
-        x: 376
+        x: 514
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 964ef050e17136b41a87fe384a682d36
-      internalID: -240436430
+      spriteID: 85b7d48c54f161d4fb6d04726b9ca923
+      internalID: -712182952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_3
+      name: room_miner_animated_3
       rect:
         serializedVersion: 2
-        x: 564
+        x: 771
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de1addaf4ddae7d43ad45d5de11b134e
-      internalID: 1641390028
+      spriteID: 9926ac048fc4ca04589925ff7dbefe0d
+      internalID: -700501701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_4
+      name: room_miner_animated_4
       rect:
         serializedVersion: 2
-        x: 752
+        x: 1028
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c9e6a10aa757394e80de41742f1e77d
-      internalID: -116934516
+      spriteID: 1a288b08315b5a043bad2629c1f86218
+      internalID: 1058412941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_5
+      name: room_miner_animated_5
       rect:
         serializedVersion: 2
-        x: 940
+        x: 1285
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca0e8aee89564a7418251ec92f6171b7
-      internalID: 1785437475
+      spriteID: 48105ae9f4bf6514ba78afd77214a681
+      internalID: -1356268381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_6
+      name: room_miner_animated_6
       rect:
         serializedVersion: 2
-        x: 1128
+        x: 1542
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,20 +270,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46fa457f3daf9744898ff9cb951f6719
-      internalID: 1600890366
+      spriteID: 0e8773d7af9e7d94da9d50c54fad476c
+      internalID: 929583879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_7
+      name: room_miner_animated_7
       rect:
         serializedVersion: 2
-        x: 1316
+        x: 1799
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fb62caa83eeeab458dcdcb101647792
-      internalID: 1084904837
+      spriteID: bb2dd442e77a88d47906631c44ac0dc2
+      internalID: 51972246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_8
+      name: room_miner_animated_8
       rect:
         serializedVersion: 2
-        x: 1504
+        x: 2056
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -314,20 +314,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e53da88dfe787d458dc258f3a7ef8ec
-      internalID: -257409236
+      spriteID: 0a29ea41d2130f649a45cdd138eaeedd
+      internalID: -165480701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_9
+      name: room_miner_animated_9
       rect:
         serializedVersion: 2
-        x: 1692
+        x: 2313
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,20 +336,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a739109ea47f5645a7bdd65423fd28c
-      internalID: -1030186690
+      spriteID: 61452074c35360442a7e71308271249e
+      internalID: -330181104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_10
+      name: room_miner_animated_10
       rect:
         serializedVersion: 2
-        x: 1880
+        x: 2570
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -358,20 +358,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc71944957080e54aad045bdb3d4af72
-      internalID: 745692597
+      spriteID: eb21dd491401e724eb8fd08ce5153f9e
+      internalID: 1482327327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_11
+      name: room_miner_animated_11
       rect:
         serializedVersion: 2
-        x: 2068
+        x: 2827
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -380,20 +380,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad7923f4dc91e7f4483d3dbf34a731cb
-      internalID: 187455144
+      spriteID: 1a21d8b5dcfd67f4bb2311b620c515f4
+      internalID: 1934797597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_12
+      name: room_miner_animated_12
       rect:
         serializedVersion: 2
-        x: 2256
+        x: 3084
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,20 +402,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af6600811571e2b419736818b7a63543
-      internalID: -956602395
+      spriteID: 7997e451f01c2e94ba9070d67d5a32f9
+      internalID: 223165732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_13
+      name: room_miner_animated_13
       rect:
         serializedVersion: 2
-        x: 2444
+        x: 3341
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -424,20 +424,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5d265b98d38ab74a83e2b184d14bd9e
-      internalID: -817142968
+      spriteID: 276726c35b0524242b9980a918f0260b
+      internalID: 491156556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_14
+      name: room_miner_animated_14
       rect:
         serializedVersion: 2
-        x: 2632
+        x: 3598
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,20 +446,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c6d1e75b1a94fe4aae18d4f847c7bee
-      internalID: 1459108729
+      spriteID: bb870a6be7071f54fb516bbd821c7eaa
+      internalID: -1959912158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_15
+      name: room_miner_animated_15
       rect:
         serializedVersion: 2
-        x: 2820
+        x: 3855
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,20 +468,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0b76f84ff6d33b4d9971b63dc207b67
-      internalID: -749205116
+      spriteID: 552c571ad719ac0449f64bb095455b9f
+      internalID: 1720346449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_16
+      name: room_miner_animated_16
       rect:
         serializedVersion: 2
-        x: 3008
+        x: 4112
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -490,20 +490,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4184e4afc5741884db9c38b78c3cbe15
-      internalID: -338707127
+      spriteID: 3e62f6f58d1bfd04282d4954d6be8e30
+      internalID: -1844451088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_17
+      name: room_miner_animated_17
       rect:
         serializedVersion: 2
-        x: 3196
+        x: 4369
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -512,20 +512,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9faab1df8437cdf41bf8f883e97c1283
-      internalID: 928988102
+      spriteID: 846b1e15566b8124a9e631c13e82607c
+      internalID: -58960716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_18
+      name: room_miner_animated_18
       rect:
         serializedVersion: 2
-        x: 3384
+        x: 4626
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -534,20 +534,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cb55581560647a4c92fe210366c605b
-      internalID: -851807046
+      spriteID: ddddeb4b5cfb85f49b3d0db601bdd971
+      internalID: 1600379361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_19
+      name: room_miner_animated_19
       rect:
         serializedVersion: 2
-        x: 3572
+        x: 4883
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -556,20 +556,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6648bd999975fc94597dfde7fed35da8
-      internalID: -399205079
+      spriteID: d5d03e14c8fbf284ba72e3a9ae64e070
+      internalID: -910511176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_20
+      name: room_miner_animated_20
       rect:
         serializedVersion: 2
-        x: 3760
+        x: 5140
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -578,20 +578,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12abca40b866ce243a6ac17e9f6000c5
-      internalID: 1869067536
+      spriteID: 9b596a8575d9e71478db40f02852af2a
+      internalID: 104367147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_21
+      name: room_miner_animated_21
       rect:
         serializedVersion: 2
-        x: 3948
+        x: 5397
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -600,20 +600,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46f713cbc853bea498990b42688414ad
-      internalID: -1681069445
+      spriteID: efe90482c396c31459911e3e7a13bdca
+      internalID: -1396201476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_22
+      name: room_miner_animated_22
       rect:
         serializedVersion: 2
-        x: 4136
+        x: 5654
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,20 +622,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f67b22eb99b07d94095b9bd183b7b570
-      internalID: -1173907390
+      spriteID: 042b5526b6247b542a58047ce995d37a
+      internalID: 305294775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_upgrader_animated_23
+      name: room_miner_animated_23
       rect:
         serializedVersion: 2
-        x: 4324
+        x: 5911
         y: 0
-        width: 188
-        height: 168
+        width: 257
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -644,184 +644,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfaea73e3b6d5e748b7035a41bc878dc
-      internalID: 1574826494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_24
-      rect:
-        serializedVersion: 2
-        x: 4512
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27538d86622e1184ea7d2885a660985e
-      internalID: 966844480
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_25
-      rect:
-        serializedVersion: 2
-        x: 4700
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e217ff97fd70fdb4e9ae4939f819215a
-      internalID: -1139189536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_26
-      rect:
-        serializedVersion: 2
-        x: 4888
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d999cab996616c4092324d8778b0ec0
-      internalID: -1466804382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_27
-      rect:
-        serializedVersion: 2
-        x: 5076
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ab0fc9c403b064469e4587d262a78a3
-      internalID: -249250414
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_28
-      rect:
-        serializedVersion: 2
-        x: 5264
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c8f01c6ae9026746b007c4c9c5f2afd
-      internalID: 788981224
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_29
-      rect:
-        serializedVersion: 2
-        x: 5452
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae63ea567da0b364eafd3e2212e382d2
-      internalID: 1826493362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_30
-      rect:
-        serializedVersion: 2
-        x: 5640
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f1de1310995d3643b4401e4fef3d25c
-      internalID: -1655569049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: room_upgrader_animated_31
-      rect:
-        serializedVersion: 2
-        x: 5828
-        y: 0
-        width: 188
-        height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 725f55f070c9bb14db21f3e998ad56e9
-      internalID: -1991933388
+      spriteID: 090e8f0aad455bc4c845f0f10c4c1735
+      internalID: 761036278
       vertices: []
       indices: 
       edges: []
@@ -830,7 +654,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 49f3bce6ce14c9d4c9d4e4df75dcb0a1
+    spriteID: f70f07068a88baa44bdfaded7f3ae722
     internalID: 0
     vertices: []
     indices: 
@@ -840,40 +664,32 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":188.0,"y":168.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":257.0,"y":179.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      room_upgrader_animated_0: -1261877471
-      room_upgrader_animated_1: 436429337
-      room_upgrader_animated_10: 745692597
-      room_upgrader_animated_11: 187455144
-      room_upgrader_animated_12: -956602395
-      room_upgrader_animated_13: -817142968
-      room_upgrader_animated_14: 1459108729
-      room_upgrader_animated_15: -749205116
-      room_upgrader_animated_16: -338707127
-      room_upgrader_animated_17: 928988102
-      room_upgrader_animated_18: -851807046
-      room_upgrader_animated_19: -399205079
-      room_upgrader_animated_2: -240436430
-      room_upgrader_animated_20: 1869067536
-      room_upgrader_animated_21: -1681069445
-      room_upgrader_animated_22: -1173907390
-      room_upgrader_animated_23: 1574826494
-      room_upgrader_animated_24: 966844480
-      room_upgrader_animated_25: -1139189536
-      room_upgrader_animated_26: -1466804382
-      room_upgrader_animated_27: -249250414
-      room_upgrader_animated_28: 788981224
-      room_upgrader_animated_29: 1826493362
-      room_upgrader_animated_3: 1641390028
-      room_upgrader_animated_30: -1655569049
-      room_upgrader_animated_31: -1991933388
-      room_upgrader_animated_4: -116934516
-      room_upgrader_animated_5: 1785437475
-      room_upgrader_animated_6: 1600890366
-      room_upgrader_animated_7: 1084904837
-      room_upgrader_animated_8: -257409236
-      room_upgrader_animated_9: -1030186690
+      room_miner_animated_0: 80010400
+      room_miner_animated_1: -1238910726
+      room_miner_animated_10: 1482327327
+      room_miner_animated_11: 1934797597
+      room_miner_animated_12: 223165732
+      room_miner_animated_13: 491156556
+      room_miner_animated_14: -1959912158
+      room_miner_animated_15: 1720346449
+      room_miner_animated_16: -1844451088
+      room_miner_animated_17: -58960716
+      room_miner_animated_18: 1600379361
+      room_miner_animated_19: -910511176
+      room_miner_animated_2: -712182952
+      room_miner_animated_20: 104367147
+      room_miner_animated_21: -1396201476
+      room_miner_animated_22: 305294775
+      room_miner_animated_23: 761036278
+      room_miner_animated_3: -700501701
+      room_miner_animated_4: 1058412941
+      room_miner_animated_5: -1356268381
+      room_miner_animated_6: 929583879
+      room_miner_animated_7: 51972246
+      room_miner_animated_8: -165480701
+      room_miner_animated_9: -330181104
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
