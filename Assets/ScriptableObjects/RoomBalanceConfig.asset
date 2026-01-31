@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b6365a6aa84ce44bc21daeb73a5dd9, type: 3}
+  m_Name: RoomBalanceConfig
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBalanceConfig
+  _freeRoomsCount: 8
+  _unlockBaseSurveyCost: 100
+  _unlockMultiplier: 1.2
+  _minerOutputAmount: 10
+  _smelterCoalCost: 1
+  _smelterMetalCost: 10
+  _smelterPlateOutput: 10
+  _surveyorTungstenPlateCost: 1
+  _surveyorSurveyDataOutput: 10
+  _researcherSurveyDataCost: 1
+  _researcherResearchDataOutput: 10
+  _assemblerCoalCost: 100
+  _assemblerTungstenCost: 1000
+  _balances: []
