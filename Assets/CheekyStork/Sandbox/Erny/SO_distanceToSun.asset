@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: SO_distanceToSun
   m_EditorClassIdentifier: Assembly-CSharp::CheekyStork.ScriptableVariables.FloatSO
   <IsResetting>k__BackingField: 1
-  _resettablesLists: []
-  _previousResettablesLists: []
+  _resettablesLists:
+  - {fileID: 11400000, guid: a0f56202a0b6e9f4cbec0f23ae9c76af, type: 2}
+  _previousResettablesLists:
+  - {fileID: 11400000, guid: a0f56202a0b6e9f4cbec0f23ae9c76af, type: 2}
   <DoDebug>k__BackingField: 0
-  _value: 1
-  _defaultValue: 1
+  _value: 0
+  _defaultValue: 0

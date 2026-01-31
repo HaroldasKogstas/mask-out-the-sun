@@ -4,7 +4,7 @@ using DG.Tweening.Core;
 using System.Collections;
 using UnityEngine;
 
-public class DistanceToSunCalculator : MonoBehaviour
+public class DistanceToSunManager : MonoBehaviour
 {
     [SerializeField]
     private FloatSO _distanceToSun;
