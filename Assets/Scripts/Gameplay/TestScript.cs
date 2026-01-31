@@ -13,16 +13,8 @@ public class TestScript : MonoBehaviour
     [Button]
     private void BuildRoom()
     {
-        this.LogFatal("BuildRoom STEP 0", LogTag.AI);
-        
-        Debug.LogError("BuildRoom STEP 1");
-        bool wasSuccess = _room.TryBuild(RoomType.Assembler);
-        Debug.Log($"BuildRoom STEP 2: Success = {wasSuccess}");
-    }
-
-    private void Awake()
-    {
-        Debug.LogError($"STEP BD");
+        bool wasSuccess = _room.TryBuild(RoomType.Miner);
+        Debug.Log($"Room build was successful: {wasSuccess}");
     }
 
     private void Start()
@@ -42,18 +34,18 @@ public class TestScript : MonoBehaviour
     private void RoomActionFailed(Room arg1, ResourceBundle arg2)
     {
         int amountOfIronConsumed = arg2[ResourceType.Iron];
-        Debug.Log($"Amount of Iron consumed in failed action: {amountOfIronConsumed}");
+        Debug.Log($"RoomActionFailed. Iron consumed: {amountOfIronConsumed}");
     }
 
     private void RoomActionSucceeded(Room arg1, Room.RoomActionResult arg2)
     {
         int amountOfIronConsumed = arg2.Consumed[ResourceType.Iron];
-        Debug.Log($"Amount of Iron consumed in action: {amountOfIronConsumed}");
+        Debug.Log($"RoomActionSucceeded. Iron consumed: {amountOfIronConsumed}");
     }
 
     private void OnRoomBuilt(Room obj)
     {
         int amountOfIronRemaining = ResourceManager.Instance.Resources[ResourceType.Iron];
-        Debug.Log($"Amount of Iron remaining: {amountOfIronRemaining}");
+        Debug.Log($"RoomBuild. Iron remaining: {amountOfIronRemaining}");
     }
 }
