@@ -8,7 +8,7 @@ namespace CheekyStork
         public string Text;
         public float Duration;
 
-        public WorldspacePopupData(Transform transform, string text, float duration = 2.5f)
+        public WorldspacePopupData(Transform transform, string text, float duration = 5f)
         {
             Transform = transform;
             Text = text;
