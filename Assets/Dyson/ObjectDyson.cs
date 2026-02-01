@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CheekyStork.ScriptableVariables;
-using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
