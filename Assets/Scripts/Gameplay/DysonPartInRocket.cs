@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using CheekyStork.ScriptableChannels;
 using CheekyStork.ScriptableVariables;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DysonPartInRocket : MonoBehaviour
@@ -22,11 +24,25 @@ public class DysonPartInRocket : MonoBehaviour
     [SerializeField]
     private float _arc;
 
+    [SerializeField]
+    private float _destroyDelay = 2;
+
+    [SerializeField]
+    private Vector3 _obstacleCenter = Vector3.zero;
+
+    [SerializeField]
+    private float _obstacleRadius = 1;
+
+    [SerializeField]
+    private TrailRenderer _trail;
+
     private bool _isActive;
     private Vector3 _startPosition;
     private float _elapsedTime;
 
     private Transform _target;
+
+    private Coroutine _coroutine;
 
     public void Initialize()
     {
@@ -41,7 +57,6 @@ public class DysonPartInRocket : MonoBehaviour
 
     void Update()
     {
-        // Move towards the target Dyson part like in orbit with a collision course with the dysonPartTranfsrom position by the end of travel time with arc where 0 is straight line and 1 is spherical
         if(!_isActive)
             return;
 
@@ -49,24 +64,17 @@ public class DysonPartInRocket : MonoBehaviour
         float t = Mathf.Clamp01(_elapsedTime / _travelTime);
 
         Vector3 targetPosition = _target.position;
-        Vector3 obstacleCenter = Vector3.zero;
-        float obstacleRadius = 1f;
         
-        // Linear interpolation between start and target
         Vector3 linearPosition = Vector3.Lerp(_startPosition, targetPosition, t);
         
-        // Calculate the travel direction and perpendicular vector
         Vector3 travelDirection = (targetPosition - _startPosition).normalized;
         
-        // Get perpendicular direction away from the obstacle
         Vector3 midPoint = (_startPosition + targetPosition) / 2f;
-        Vector3 toObstacle = obstacleCenter - midPoint;
+        Vector3 toObstacle = _obstacleCenter - midPoint;
         
-        // Use cross product to get perpendicular direction
         Vector3 perpendicular = Vector3.Cross(travelDirection, toObstacle.normalized);
         if (perpendicular.magnitude < 0.01f)
         {
-            // Fallback if vectors are parallel
             perpendicular = Vector3.Cross(travelDirection, Vector3.up);
             if (perpendicular.magnitude < 0.01f)
             {
@@ -75,16 +83,13 @@ public class DysonPartInRocket : MonoBehaviour
         }
         perpendicular = perpendicular.normalized;
         
-        // Calculate required clearance to avoid the obstacle
-        float distanceToObstacle = Vector3.Distance(linearPosition, obstacleCenter);
-        float requiredClearance = obstacleRadius + 0.5f; // Add safety margin
+        float distanceToObstacle = Vector3.Distance(linearPosition, _obstacleCenter);
+        float requiredClearance = _obstacleRadius + 0.5f; // Add safety margin
         
-        // Calculate arc height - ensure it's enough to clear the obstacle
         float baseArcHeight = _arc * Vector3.Distance(_startPosition, targetPosition) * 0.5f;
         float clearanceArcHeight = Mathf.Max(0, requiredClearance - distanceToObstacle);
         float arcHeight = Mathf.Max(baseArcHeight, clearanceArcHeight) * Mathf.Sin(t * Mathf.PI);
         
-        // Apply the arc offset
         Vector3 arcOffset = perpendicular * arcHeight;
         transform.position = linearPosition + arcOffset;
 
@@ -95,10 +100,23 @@ public class DysonPartInRocket : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        StopCoroutine(_coroutine);
+    }
+
     private void OnArrived()
     {
         _onRocketArrivedChannelSO.RaiseEvent();
+
         _isActive = false;
+
+        _coroutine = StartCoroutine(DestroyCoroutine());
+    }
+
+    IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(_destroyDelay);
 
         Destroy(gameObject);
     }

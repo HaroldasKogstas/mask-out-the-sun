@@ -484,7 +484,10 @@ MonoBehaviour:
   _progressSO: {fileID: 11400000, guid: 3c7dcb14cf17e0f4aa29aed006077577, type: 2}
   <Radius>k__BackingField: 1.1
   <NumPoints>k__BackingField: 1000
-  _objectToSpawn: {fileID: 4676707106632958891, guid: 6ea98e2e9692a184c9f2b85b87bcb695, type: 3}
+  _nextDysonPartTransformSO: {fileID: 11400000, guid: 16a10a77f50e560438304c5ac120134d, type: 2}
+  _dysonPartJourneyStartChannelSO: {fileID: 11400000, guid: fdadde4c37c324345ac8051875305f92, type: 2}
+  _rocketArrivalChannelSO: {fileID: 11400000, guid: 96772b8320f8c0d42941b7bb89011223, type: 2}
+  _objectToSpawn: {fileID: -1383874422708672351, guid: 6ea98e2e9692a184c9f2b85b87bcb695, type: 3}
   _objectSize: 0.1
   _orbitObjects: 0
   _orbitSpeedMin: 5
@@ -492,6 +495,7 @@ MonoBehaviour:
   _randomizeSize: 0
   _minSize: 0.05
   _maxSize: 0.15
+  _dysonSpherePartsDeployed: {fileID: 11400000, guid: 88e39e9f94bb6fc4292af62a8bf37c5a, type: 2}
 --- !u!1 &8424047336165591733
 GameObject:
   m_ObjectHideFlags: 0

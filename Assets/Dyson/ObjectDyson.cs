@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using CheekyStork.ScriptableVariables;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine;
 public class ObjectDyson : DysonGenerator
 {
     [SerializeField]
-    GameObject _objectToSpawn;
+    DysonPart _objectToSpawn;
 
     [SerializeField]
     float _objectSize = 0.1f;
@@ -34,9 +35,12 @@ public class ObjectDyson : DysonGenerator
     [SerializeField]
     float _maxSize = 0.15f;
 
+    [SerializeField]
+    private IntSO _dysonSpherePartsDeployed;
+
     private int _nextNotTakenDysonPart;
 
-    List<GameObject> _spawnedObjects = new();
+    List<DysonPart> _spawnedObjects = new();
     List<int> _spawnOrder = new();
 
     void Start()
@@ -68,11 +72,12 @@ public class ObjectDyson : DysonGenerator
 
             // Set size (randomized if enabled)
             float size = _randomizeSize ? Random.Range(_minSize, _maxSize) : _objectSize;
-            spawnedObject.transform.localScale = Vector3.one * size;
+
+            spawnedObject.Initialize(size);
 
             if (_orbitObjects)
             {
-                var orbit = spawnedObject.AddComponent<OrbitObject>();
+                var orbit = spawnedObject.gameObject.AddComponent<OrbitObject>();
                 float randomSpeed = Random.Range(_orbitSpeedMin, _orbitSpeedMax);
                 // Use a perpendicular axis for proper orbital motion around the sun
                 Vector3 orbitAxis = Vector3.Cross(point.normalized, Random.onUnitSphere).normalized;
@@ -108,9 +113,11 @@ public class ObjectDyson : DysonGenerator
             {
                 // Find if this object index appears in the first Step positions of spawn order
                 int positionInSpawnOrder = _spawnOrder.IndexOf(i);
-                _spawnedObjects[i].SetActive(positionInSpawnOrder < Step && positionInSpawnOrder >= 0);
+                _spawnedObjects[i].gameObject.SetActive(positionInSpawnOrder < Step && positionInSpawnOrder >= 0);
             }
         }
+
+        _dysonSpherePartsDeployed.Value = Step;
     }
 
     protected override void OnDysonPartJourneyStart()
