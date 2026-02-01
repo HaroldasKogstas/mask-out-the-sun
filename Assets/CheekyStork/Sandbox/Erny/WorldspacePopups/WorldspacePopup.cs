@@ -27,8 +27,9 @@ namespace CheekyStork
         {
             Sequence popupSequence = DOTween.Sequence();
 
-            popupSequence.Append(transform.DOMoveY(transform.position.y + 0.2f, duration).SetEase(Ease.OutQuad));
+            popupSequence.Append(transform.DOMoveY(transform.position.y + 0.1f, duration).SetEase(Ease.OutQuad));
             popupSequence.Join(_text.DOFade(0f, duration - 0.5f).SetEase(Ease.OutQuad).SetDelay(0.5f));
+            popupSequence.Join(_sprite.DOFade(0f, duration - 0.5f).SetEase(Ease.OutQuad).SetDelay(0.5f));
             popupSequence.OnComplete(() => Destroy(gameObject));
             popupSequence.Play();
         }

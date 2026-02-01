@@ -601,8 +601,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomPopupRequestor
   _popupRequestChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
-  _room: {fileID: 0}
-  _uiConfig: {fileID: 0}
+  _multiPopupRequestChannel: {fileID: 11400000, guid: d2750a9d31abcf24bb5fa5df774f647a, type: 2}
+  _room: {fileID: 496776118989371865}
+  _uiConfig: {fileID: 11400000, guid: bf86a2225fe0d5b47b550ccb168130d0, type: 2}
+  _popupOriginOffset: {x: 0.05, y: 0.02, z: 0}
 --- !u!114 &496776118989371865
 MonoBehaviour:
   m_ObjectHideFlags: 0

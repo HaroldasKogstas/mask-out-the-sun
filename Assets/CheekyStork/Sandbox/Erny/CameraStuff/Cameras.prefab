@@ -100,13 +100,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5381419359944316526}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.042462528, y: -0, z: -0, w: 0.9990981}
-  m_LocalPosition: {x: 0, y: -3.64, z: -21.39}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.64, z: -21.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9142614482897146268}
-  m_LocalEulerAnglesHint: {x: -4.867, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8403542265073520305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraYSetter
   FloatToRespondTo: {fileID: 11400000, guid: 89587122e82e7194c8e8f5de260b448e, type: 2}
   InvertResponse: 0
-  MinValue: -5.704
-  MaxValue: -3.64
+  MinValue: -5.544
+  MaxValue: -2.64
   _cameraToMove: {fileID: 3066257927178123686}
 --- !u!1 &8320086873985051885
 GameObject:
@@ -249,8 +249,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8320086873985051885}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.042462528, y: 0, z: 0, w: 0.9990981}
-  m_LocalPosition: {x: 0, y: -3.64, z: -21.39}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.64, z: -21.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
