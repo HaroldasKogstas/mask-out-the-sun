@@ -496,8 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FloatBasedExposure
   FloatToRespondTo: {fileID: 11400000, guid: a8969b49945e2f446b8f4303214f8ff1, type: 2}
   InvertResponse: 0
-  MinValue: 15
-  MaxValue: 11
+  MinValue: 14
+  MaxValue: 12
   _volume: {fileID: 432432460}
 --- !u!1 &595855063
 GameObject:
@@ -5258,6 +5258,7 @@ GameObject:
   - component: {fileID: 1814236158}
   - component: {fileID: 1814236160}
   - component: {fileID: 1814236159}
+  - component: {fileID: 1814236161}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -5487,6 +5488,21 @@ Light:
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1814236161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814236157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b4968e674776445a9a9d895969c4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionalLightController
+  _directionalLight: {fileID: 1814236160}
+  _progress: {fileID: 11400000, guid: 3c7dcb14cf17e0f4aa29aed006077577, type: 2}
+  _minIntensityMultiplier: 0.2
 --- !u!1001 &1822055481
 PrefabInstance:
   m_ObjectHideFlags: 0

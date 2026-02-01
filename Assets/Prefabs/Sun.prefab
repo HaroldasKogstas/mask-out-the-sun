@@ -523,7 +523,7 @@ MonoBehaviour:
   _dysonPartJourneyStartChannelSO: {fileID: 11400000, guid: fdadde4c37c324345ac8051875305f92, type: 2}
   _rocketArrivalChannelSO: {fileID: 11400000, guid: 96772b8320f8c0d42941b7bb89011223, type: 2}
   _objectToSpawn: {fileID: -1383874422708672351, guid: 6ea98e2e9692a184c9f2b85b87bcb695, type: 3}
-  _objectSize: 0.1
+  _objectSize: 0.085
   _orbitObjects: 0
   _orbitSpeedMin: 5
   _orbitSpeedMax: 15
