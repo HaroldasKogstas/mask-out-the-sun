@@ -1,18 +1,30 @@
 using CheekyStork.ScriptableVariables;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceDisplayer : MonoBehaviour
 {
+    [SerializeField]
+    private ResourceType _resourceType;
+
     [SerializeField]
     private IntSO _valueToDisplay;
 
     [SerializeField]
     private TextMeshProUGUI _textDisplay;
 
+    [SerializeField]
+    private Image _iconDisplay;
+
+    [SerializeField]
+    private UIConfig _uiConfig;
+
     private void Awake()
     {
-        _valueToDisplay.OnValueChanged += OnValueChanged;
+        SetupVisuals();
+
+        _valueToDisplay.OnValueChanged += OnValueChanged;        
 
         OnValueChanged();
     }
@@ -20,6 +32,12 @@ public class ResourceDisplayer : MonoBehaviour
     private void OnDestroy()
     {
         _valueToDisplay.OnValueChanged -= OnValueChanged;
+    }
+
+    private void SetupVisuals()
+    {
+        _iconDisplay.sprite = _uiConfig.GetResourceIcon(_resourceType);
+        _iconDisplay.color = _uiConfig.GetResourceColor(_resourceType);
     }
 
     private void OnValueChanged()

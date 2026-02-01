@@ -10,9 +10,9 @@ public class ScrollLevelSetter : MonoBehaviour
 
     private float _targetScrollLevel;
 
-    private float _smoothTime = 0.2f;
+    private float _smoothTime = 0.3f;
 
-    private float _step = 0.05f;
+    private float _step = 0.06f;
 
     private TweenerCore<float, float, DG.Tweening.Plugins.Options.FloatOptions> _currentTween;
 
