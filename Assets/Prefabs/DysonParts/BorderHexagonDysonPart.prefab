@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6228085713443132124}
+  - component: {fileID: -2118746426559917596}
   m_Layer: 0
   m_Name: BorderHexagonDysonPart
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 9200806818953180756}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2118746426559917596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515195655413185679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d62dc5d12b20747802c457ddf71c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DysonPart
 --- !u!1001 &8657445090002686399
 PrefabInstance:
   m_ObjectHideFlags: 0
