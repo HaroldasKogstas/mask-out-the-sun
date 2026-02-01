@@ -38,7 +38,7 @@ public class ObjectDyson : DysonGenerator
     [SerializeField]
     private IntSO _dysonSpherePartsDeployed;
 
-    private int _nextNotTakenDysonPart;
+    private int _currentTargetIndex;
 
     List<DysonPart> _spawnedObjects = new();
     List<int> _spawnOrder = new();
@@ -87,13 +87,11 @@ public class ObjectDyson : DysonGenerator
             _spawnedObjects.Add(spawnedObject);
         }
 
-        // Initialize _nextNotTakenDysonPart to match current progress
-        _nextNotTakenDysonPart = Step;
+        _currentTargetIndex = Step;
         
         UpdateObjectsVisibility();
         
-        // Prepare the next dyson part transform if we haven't reached the end
-        if (_nextNotTakenDysonPart < _spawnOrder.Count)
+        if (_currentTargetIndex < _spawnOrder.Count)
         {
             PrepareNextDysonPartTransform();
         }
@@ -122,11 +120,10 @@ public class ObjectDyson : DysonGenerator
 
     protected override void OnDysonPartJourneyStart()
     {
-        // This is called when a DysonPartInRocket is created and needs to know where to go
-        // Increment counter and prepare the next part's transform
-        _nextNotTakenDysonPart++;
-        
-        if (_nextNotTakenDysonPart < _spawnOrder.Count)
+        // Rocket has read current target and launched
+        // Now prepare the NEXT target for the NEXT rocket
+        _currentTargetIndex++;
+        if (_currentTargetIndex < _spawnOrder.Count)
         {
             PrepareNextDysonPartTransform();
         }
@@ -134,13 +131,30 @@ public class ObjectDyson : DysonGenerator
     
     private void PrepareNextDysonPartTransform()
     {
-        if (_nextNotTakenDysonPart < _spawnOrder.Count && _nextNotTakenDysonPart < _spawnedObjects.Count)
+        // Validate index is within bounds
+        if (_currentTargetIndex < 0 || _currentTargetIndex >= _spawnOrder.Count)
         {
-            int actualIndex = _spawnOrder[_nextNotTakenDysonPart];
-            if (actualIndex < _spawnedObjects.Count && _spawnedObjects[actualIndex] != null)
-            {
-                UpdateNextDysonPartTransform(_spawnedObjects[actualIndex].transform);
-            }
+            Debug.LogWarning($"Target index {_currentTargetIndex} out of range (0-{_spawnOrder.Count - 1})");
+            return;
+        }
+
+        // Get actual spawned object index from spawn order
+        int spawnedObjectIndex = _spawnOrder[_currentTargetIndex];
+        
+        if (spawnedObjectIndex < 0 || spawnedObjectIndex >= _spawnedObjects.Count)
+        {
+            Debug.LogWarning($"Spawned object index {spawnedObjectIndex} out of range (0-{_spawnedObjects.Count - 1})");
+            return;
+        }
+
+        DysonPart targetPart = _spawnedObjects[spawnedObjectIndex];
+        if (targetPart != null)
+        {
+            UpdateNextDysonPartTransform(targetPart.transform);
+        }
+        else
+        {
+            Debug.LogWarning($"Target DysonPart at index {spawnedObjectIndex} is null");
         }
     }
 }
