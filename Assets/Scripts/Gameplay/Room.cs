@@ -15,6 +15,7 @@ public sealed class Room : MonoBehaviour
     public event Action<Room, int> Upgraded;
 
     public event Action<Room> Destroyed;
+    public event Action<Room, SmelterRecipe> RecipeChanged;
 
     [Header("Config")]
     [SerializeField]
@@ -142,6 +143,7 @@ public sealed class Room : MonoBehaviour
     public void SetSmelterRecipe(SmelterRecipe recipe)
     {
         _smelterRecipe = recipe;
+        RecipeChanged?.Invoke(this, recipe);
     }
 
     public int GetUnlockCostSurveyData()

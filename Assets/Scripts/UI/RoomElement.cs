@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public sealed class RoomElement : MonoBehaviour
@@ -11,7 +13,7 @@ public sealed class RoomElement : MonoBehaviour
         unlocked,
         built
     }
-
+    
     [SerializeField]
     private UiSpriteSheetAnimator uiSpriteSheetAnimator;
 
@@ -56,6 +58,15 @@ public sealed class RoomElement : MonoBehaviour
 
     [SerializeField]
     private Button _destroyButton;
+    
+    [SerializeField] 
+    private Toggle _smelterToggle;
+
+    [SerializeField] 
+    private List<MaskableGraphic> recipeDependentColorElements;
+    
+    [SerializeField]
+    private Animator _animator;
 
     private void Awake()
     {
@@ -63,11 +74,13 @@ public sealed class RoomElement : MonoBehaviour
         _room.Unlocked += OnRoomUnlocked;
         _room.Upgraded += OnRoomUpgraded;
         _room.Destroyed += OnRoomDestroyed;
-
+        _room.RecipeChanged += UpdateRecipeDependentColors;
+        
+        _smelterToggle.onValueChanged.AddListener(OnToggleValueWasChanged);
         _upgradeButton.onClick.AddListener(TryUpgradeRoom);
         _destroyButton.onClick.AddListener(DestroyRoom);
     }
-
+    
     private void Start()
     {
         UpdateResourceImages();
@@ -81,9 +94,55 @@ public sealed class RoomElement : MonoBehaviour
         _room.Unlocked -= OnRoomUnlocked;
         _room.Upgraded -= OnRoomUpgraded;
         _room.Destroyed -= OnRoomDestroyed;
+        _room.RecipeChanged -= UpdateRecipeDependentColors;
 
+        _smelterToggle.onValueChanged.RemoveListener(OnToggleValueWasChanged);
         _upgradeButton.onClick.RemoveListener(TryUpgradeRoom);
         _destroyButton.onClick.RemoveListener(DestroyRoom);
+    }
+
+    private void UpdateRecipeDependentColors(Room room, SmelterRecipe recipe)
+    {
+        if (room.Type == RoomType.Smelter)
+        {
+            if (recipe == SmelterRecipe.TungstenPlate)
+            {
+                foreach (MaskableGraphic image in recipeDependentColorElements)
+                {
+                    image.color = _uiConfig.GetResourceColor(ResourceType.TungstenPlate);
+                    _animator.ResetTrigger("ToggleRight");
+                    _animator.SetTrigger("ToggleLeft");
+                }
+            }
+            else
+            {
+                foreach (MaskableGraphic image in recipeDependentColorElements)
+                {
+                    image.color = _uiConfig.GetResourceColor(ResourceType.SteelPlate);
+                    _animator.ResetTrigger("ToggleLeft");
+                    _animator.SetTrigger("ToggleRight");
+                }
+            }
+        }
+        else
+        {
+            foreach (MaskableGraphic image in recipeDependentColorElements)
+            {
+                image.color = _uiConfig.DefaultColor;
+            }
+        }
+    }
+    
+    private void OnToggleValueWasChanged(bool state)
+    {
+        if (state)
+        {
+            _room.SetSmelterRecipe(SmelterRecipe.TungstenPlate);
+        }
+        else
+        {
+            _room.SetSmelterRecipe(SmelterRecipe.SteelPlate);
+        }
     }
 
     private void Update()
@@ -163,6 +222,8 @@ public sealed class RoomElement : MonoBehaviour
             ToggleCanvasGroup(_lockedCanvasGroup, false);
             ToggleCanvasGroup(_unlockedCanvasGroup, false);
             ToggleCanvasGroup(_builtCanvasGroup, true);
+
+            _smelterToggle.gameObject.SetActive(_room.Type == RoomType.Smelter);
         }
         else
         {
@@ -170,6 +231,8 @@ public sealed class RoomElement : MonoBehaviour
             ToggleCanvasGroup(_unlockedCanvasGroup, true);
             ToggleCanvasGroup(_builtCanvasGroup, false);
         }
+        
+        UpdateRecipeDependentColors(_room, _room.CurrentSmelterRecipe);
     }
 
     private void UpdateResourceImages()

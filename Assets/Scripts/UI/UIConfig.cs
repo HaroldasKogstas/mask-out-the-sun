@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UIConfig", menuName = "Scriptable Objects/UIConfig")]
 public class UIConfig : ScriptableObject
 {
+    [SerializeField] private Color _defaultColor = Color.white;
+    
     [Serializable]
     public class RoomTypeUISet
     {
@@ -20,6 +22,8 @@ public class UIConfig : ScriptableObject
         public List<Sprite> RoomActiveFrames => _roomActiveFrames;
         public string RoomName => _roomName;
     }
+    
+    public Color DefaultColor => _defaultColor;
 
     [Serializable]
     public class ResourceTypeUISet
