@@ -66,8 +66,11 @@ public sealed class RoomElement : MonoBehaviour
     private List<MaskableGraphic> recipeDependentColorElements;
     
     [SerializeField]
+    private List<MaskableGraphic> _themeDependantColorElements;
+    
+    [SerializeField]
     private Animator _animator;
-
+    
     private void Awake()
     {
         _room.Built += OnRoomBuilt;
@@ -86,6 +89,7 @@ public sealed class RoomElement : MonoBehaviour
         UpdateResourceImages();
         UpdateState();
         RefreshUpgradeBubbles();
+        UpdateThemeColors();
     }
 
     private void OnDestroy()
@@ -99,6 +103,14 @@ public sealed class RoomElement : MonoBehaviour
         _smelterToggle.onValueChanged.RemoveListener(OnToggleValueWasChanged);
         _upgradeButton.onClick.RemoveListener(TryUpgradeRoom);
         _destroyButton.onClick.RemoveListener(DestroyRoom);
+    }
+    
+    private void UpdateThemeColors()
+    {
+        foreach (MaskableGraphic image in _themeDependantColorElements)
+        {
+            image.color = _uiConfig.DefaultColor;
+        }
     }
 
     private void UpdateRecipeDependentColors(Room room, SmelterRecipe recipe)
@@ -155,6 +167,11 @@ public sealed class RoomElement : MonoBehaviour
         else
         {
             _progressImage.fillAmount = 0f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            UpdateThemeColors();
         }
     }
 
