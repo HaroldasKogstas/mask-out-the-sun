@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7264418915262012001}
   - component: {fileID: 3373320720662817566}
   - component: {fileID: 4832896151261802080}
+  - component: {fileID: 6854598421200505962}
   m_Layer: 5
   m_Name: ResourceGainElement
   m_TagString: Untagged
@@ -234,3 +235,19 @@ MonoBehaviour:
   _uiConfig: {fileID: 11400000, guid: bf86a2225fe0d5b47b550ccb168130d0, type: 2}
   _elementImage: {fileID: 2640146197103084711}
   _button: {fileID: 7264418915262012001}
+--- !u!114 &6854598421200505962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758393160077987601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80724365d30f7ae4daa41b58370f5670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ElementClickedPopupRequestor
+  _popupRequestChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
+  _multiPopupRequestChannel: {fileID: 11400000, guid: d2750a9d31abcf24bb5fa5df774f647a, type: 2}
+  _clickableElement: {fileID: 4832896151261802080}
+  _uiConfig: {fileID: 11400000, guid: bf86a2225fe0d5b47b550ccb168130d0, type: 2}

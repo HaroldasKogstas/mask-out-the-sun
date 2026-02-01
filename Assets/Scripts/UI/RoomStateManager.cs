@@ -9,7 +9,7 @@ public class RoomStateManager : MonoBehaviour
     [SerializeField] private List<RoomElement> _roomElements;
     
     [Button]
-    public void GetAllReferencesInChildren()
+    public void GetAllReferencesInChildren() 
     {
         _rooms = new List<Room>(GetComponentsInChildren<Room>());
         _roomElements = new List<RoomElement>(GetComponentsInChildren<RoomElement>());
