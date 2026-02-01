@@ -13,6 +13,7 @@ public class ModuleBuildElement : MonoBehaviour
     
     private void Start()
     {
+        UpdateReference();
         _button.onClick.AddListener(OnButtonClicked);
     }
     

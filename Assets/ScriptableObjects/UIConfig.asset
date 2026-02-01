@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced200f17263cf947a188d406b41419c, type: 3}
   m_Name: UIConfig
   m_EditorClassIdentifier: Assembly-CSharp::UIConfig
+  _defaultColor: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
   _roomTypeUISets:
   - _roomType: 0
     _roomSpriteDefault: {fileID: 21300000, guid: 994af323d9ee3d14996e483bd66805ca, type: 3}
-    _roomIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _roomIcon: {fileID: 21300000, guid: 63d20516422f7bd438369a5f4a471b11, type: 3}
     _roomActiveFrames:
     - {fileID: 80010400, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
     - {fileID: -1238910726, guid: 7ab66e4716f88ae4fafa7a2a3c99f69e, type: 3}
@@ -73,7 +74,7 @@ MonoBehaviour:
     _roomName: Smelter
   - _roomType: 2
     _roomSpriteDefault: {fileID: 21300000, guid: 9c805fc16ed6eb54c814a29732ece77b, type: 3}
-    _roomIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _roomIcon: {fileID: 21300000, guid: 02f6ea5d549fd1948834b2fab880cf77, type: 3}
     _roomActiveFrames:
     - {fileID: 416597969, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
     - {fileID: 939915548, guid: 9b81a9287d697b04faf365f8fe9ec191, type: 3}
@@ -102,7 +103,7 @@ MonoBehaviour:
     _roomName: Surveyor
   - _roomType: 3
     _roomSpriteDefault: {fileID: 21300000, guid: 26c04b6e36258b549981fb3e96ebc9f1, type: 3}
-    _roomIcon: {fileID: 21300000, guid: 801ab1229273e0843a594bbe6a1638ae, type: 3}
+    _roomIcon: {fileID: 21300000, guid: 87d0154c8f63c8e4ca0ceec94e5920b7, type: 3}
     _roomActiveFrames:
     - {fileID: -1261877471, guid: 639b160b68701b8498d983d213189f54, type: 3}
     - {fileID: 436429337, guid: 639b160b68701b8498d983d213189f54, type: 3}
@@ -177,14 +178,14 @@ MonoBehaviour:
     _resourceIcon: {fileID: 21300000, guid: 242e496f0aa3a274da6f9e25f81bcde4, type: 3}
     _resourceColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
   - _resourceType: 3
-    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceIcon: {fileID: 21300000, guid: 52a1b81bc32898649ba5bdab6b33fed8, type: 3}
     _resourceColor: {r: 0.46666667, g: 0.3372549, b: 0.52156866, a: 1}
   - _resourceType: 4
-    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceIcon: {fileID: 21300000, guid: 52a1b81bc32898649ba5bdab6b33fed8, type: 3}
     _resourceColor: {r: 0.30153078, g: 0.4775006, b: 0.5283019, a: 1}
   - _resourceType: 5
-    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceIcon: {fileID: 21300000, guid: 80f1be9e4f31edb4bb5321ddef84b7ad, type: 3}
     _resourceColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   - _resourceType: 6
-    _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
+    _resourceIcon: {fileID: 21300000, guid: 9dd2a551f3f406748a7bcd8ac17761b2, type: 3}
     _resourceColor: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}

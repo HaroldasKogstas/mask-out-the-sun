@@ -1,39 +1,79 @@
 using CheekyStork;
-using Sirenix.OdinInspector;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static Room;
 
 public class RoomPopupRequestor : PopupRequestor
 {
-    //[SerializeField]
-    //private ResourceGeneratingRoom asd;
+    [SerializeField]
+    private Room _room;
+
+    [SerializeField]
+    private UIConfig _uiConfig;
+
+    [SerializeField]
+    private Vector3 _popupOriginOffset;
 
     private void Awake()
     {
-        StartCoroutine(PopupRequest(1f));
+        _room.ActionSucceeded += OnRoomAction;
     }
 
     private void OnDestroy()
     {
-        
+        _room.ActionSucceeded -= OnRoomAction;
     }
 
-
-    public void OnThingHappened(int value)
+    public void OnRoomAction(Room room, RoomActionResult result)
     {
-        WorldspacePopupData popupData = new WorldspacePopupData(transform, "+" + value.ToString());
+        // for every resource type, check result.produced and result.consumed, and create and send popups accordingly
 
-        RequestPopup(popupData);
+        List< WorldspacePopupData> popupsToRequest = new List<WorldspacePopupData>();
+
+        foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType)))
+        {
+            if (result.Consumed[resourceType] > 0)
+            {
+                WorldspacePopupData popupData = CreatePopupDataConsumed(result, resourceType);
+                popupsToRequest.Add(popupData);
+            }
+            if (result.Produced[resourceType] > 0)
+            {
+                WorldspacePopupData popupData = CreatePopupDataProduced(result, resourceType);
+                popupsToRequest.Add(popupData);
+            }
+        }
+
+        RequestMultiPopup(new WorldspaceMultiPopupData(transform.position + _popupOriginOffset, popupsToRequest));
     }
 
-    private IEnumerator PopupRequest(float delay)
+    private WorldspacePopupData CreatePopupDataConsumed(RoomActionResult result, ResourceType resourceType)
     {
-        yield return new WaitForSeconds(delay);
+        int valueConsumed = result.Consumed[resourceType];
 
-        int randomValue = Random.Range(2, 15);
+        Vector3 positionData = transform.position + _popupOriginOffset;
 
-        OnThingHappened(randomValue);
+        WorldspacePopupData popupData = new WorldspacePopupData(
+            position: positionData,
+            icon: _uiConfig.GetResourceIcon(resourceType),
+            text: "-" + valueConsumed.ToString(),
+            iconColor: Color.darkRed);
 
-        StartCoroutine(PopupRequest(Random.Range(5f, 10f)));
+        return popupData;
+    }
+
+    private WorldspacePopupData CreatePopupDataProduced(RoomActionResult result, ResourceType resourceType)
+    {
+        int valueProduced = result.Produced[resourceType];
+
+        Vector3 positionData = transform.position + _popupOriginOffset;
+
+        WorldspacePopupData popupData = new WorldspacePopupData(
+            position: positionData,
+            icon: _uiConfig.GetResourceIcon(resourceType),
+            text: "+" + valueProduced.ToString(),
+            iconColor: _uiConfig.GetResourceColor(resourceType));
+
+        return popupData;
     }
 }
