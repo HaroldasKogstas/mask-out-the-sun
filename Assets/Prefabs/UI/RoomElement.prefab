@@ -605,6 +605,7 @@ MonoBehaviour:
   _room: {fileID: 496776118989371865}
   _uiConfig: {fileID: 11400000, guid: bf86a2225fe0d5b47b550ccb168130d0, type: 2}
   _popupOriginOffset: {x: 0.05, y: 0.02, z: 0}
+  _crossIcon: {fileID: 21300000, guid: e7e3908921fd1234d937d38efac08f2e, type: 3}
 --- !u!114 &496776118989371865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +667,7 @@ MonoBehaviour:
   - {fileID: 2818931860747539665}
   - {fileID: 1097280363472362913}
   - {fileID: 6981963344881833244}
+  _themeDependantColorElements: []
   _animator: {fileID: 7258468049358084105}
 --- !u!1 &2458551157650676698
 GameObject:

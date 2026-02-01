@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ResourceElement : MonoBehaviour
 {
+    public event UnityAction<ResourceType, int> OnElementClicked;
+
     [SerializeField] private UIConfig _uiConfig;
     [SerializeField] private Image _elementImage;
     [SerializeField] private Button _button;
@@ -21,6 +24,8 @@ public class ResourceElement : MonoBehaviour
     {
         var resourceData = new ResourceData(_resourceType, 1);
         ResourceManager.Instance.AddResource(resourceData);
+
+        OnElementClicked?.Invoke(_resourceType, 1);
     }
     
     private ResourceType _resourceType;

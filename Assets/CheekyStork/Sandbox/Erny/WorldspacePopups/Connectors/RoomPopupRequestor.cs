@@ -14,14 +14,19 @@ public class RoomPopupRequestor : PopupRequestor
     [SerializeField]
     private Vector3 _popupOriginOffset;
 
+    [SerializeField]
+    private Sprite _crossIcon;
+
     private void Awake()
     {
         _room.ActionSucceeded += OnRoomAction;
+        _room.ActionFailed += OnRoomActionFailed;
     }
 
     private void OnDestroy()
     {
         _room.ActionSucceeded -= OnRoomAction;
+        _room.ActionFailed -= OnRoomActionFailed;
     }
 
     public void OnRoomAction(Room room, RoomActionResult result)
@@ -40,6 +45,29 @@ public class RoomPopupRequestor : PopupRequestor
             if (result.Produced[resourceType] > 0)
             {
                 WorldspacePopupData popupData = CreatePopupDataProduced(result, resourceType);
+                popupsToRequest.Add(popupData);
+            }
+        }
+
+        RequestMultiPopup(new WorldspaceMultiPopupData(transform.position + _popupOriginOffset, popupsToRequest));
+    }
+
+    private void OnRoomActionFailed(Room room, ResourceBundle resources)
+    {
+        // for every resource type, check result.produced and result.consumed, and create and send popups accordingly
+
+        List<WorldspacePopupData> popupsToRequest = new List<WorldspacePopupData>();
+
+        foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType)))
+        {
+            if (resources[resourceType] > 0)
+            {
+                Vector3 positionData = transform.position + _popupOriginOffset;
+                WorldspacePopupData popupData = new WorldspacePopupData(
+                    position: positionData,
+                    icon: _crossIcon,
+                    text: "insufficient resources",
+                    iconColor: Color.darkRed);
                 popupsToRequest.Add(popupData);
             }
         }
