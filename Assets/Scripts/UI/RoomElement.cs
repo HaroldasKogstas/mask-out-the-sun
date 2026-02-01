@@ -69,6 +69,9 @@ public sealed class RoomElement : MonoBehaviour
     private List<MaskableGraphic> _themeDependantColorElements;
     
     [SerializeField]
+    private List<MaskableGraphic> _brighterThemeDependantColorElements;
+    
+    [SerializeField]
     private Animator _animator;
     
     private void Awake()
@@ -110,6 +113,11 @@ public sealed class RoomElement : MonoBehaviour
         foreach (MaskableGraphic image in _themeDependantColorElements)
         {
             image.color = _uiConfig.DefaultColor;
+        }
+        
+        foreach (MaskableGraphic image in _brighterThemeDependantColorElements)
+        {
+            image.color = _uiConfig.BrighterColor;
         }
     }
 

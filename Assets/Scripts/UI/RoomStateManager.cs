@@ -13,7 +13,7 @@ public class RoomStateManager : MonoBehaviour
         _rooms = new List<Room>(GetComponentsInChildren<Room>());
     }
 
-    private void Start()
+    private void Awake()
     {
         var numberOfRoomsToBeUnlocked = RoomUnlockManager.Instance.UnlockedRoomsCount;
         for (int i = 0; i < _rooms.Count; i++)
@@ -25,6 +25,19 @@ public class RoomStateManager : MonoBehaviour
             else
             {
                 _rooms[i].ForceLockState(true);
+            }
+
+            if (i % 3 == 0)
+            {
+                _rooms[i].ForceUnderlyingElement(ResourceType.Iron);
+            }
+            else if (i % 3 == 1)
+            {
+                _rooms[i].ForceUnderlyingElement(ResourceType.Coal);
+            }
+            else if (i % 3 == 2)
+            {
+                _rooms[i].ForceUnderlyingElement(ResourceType.Tungsten);
             }
         }
     }

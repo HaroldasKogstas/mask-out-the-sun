@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIConfig : ScriptableObject
 {
     [SerializeField] private Color _defaultColor = Color.white;
+    [SerializeField] private Color _brighterColor = Color.white;
     
     [Serializable]
     public class RoomTypeUISet
@@ -24,6 +25,7 @@ public class UIConfig : ScriptableObject
     }
     
     public Color DefaultColor => _defaultColor;
+    public Color BrighterColor => _brighterColor;
 
     [Serializable]
     public class ResourceTypeUISet

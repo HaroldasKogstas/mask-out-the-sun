@@ -102,7 +102,10 @@ public class DysonPartInRocket : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
     }
 
     private void OnArrived()

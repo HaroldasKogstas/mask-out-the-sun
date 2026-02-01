@@ -61,6 +61,20 @@ public sealed class Room : MonoBehaviour
 
     public SmelterRecipe CurrentSmelterRecipe => _smelterRecipe;
 
+    public bool ForceUnderlyingElement(ResourceType newElement)
+    {
+        if (newElement != ResourceType.Iron
+            && newElement != ResourceType.Tungsten
+            && newElement != ResourceType.Coal)
+        {
+            return false;
+        }
+
+        _underlyingElement = newElement;
+     
+        return true;
+    }
+    
     public bool ForceLockState(bool locked)
     {
         _isLocked = locked;
