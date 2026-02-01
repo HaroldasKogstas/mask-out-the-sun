@@ -6,14 +6,16 @@ using UnityEngine;
 public class RoomStateManager : MonoBehaviour
 {
     [SerializeField] private List<Room> _rooms;
+    [SerializeField] private List<RoomElement> _roomElements;
     
     [Button]
     public void GetAllReferencesInChildren()
     {
         _rooms = new List<Room>(GetComponentsInChildren<Room>());
+        _roomElements = new List<RoomElement>(GetComponentsInChildren<RoomElement>());
     }
 
-    private void Awake()
+    private void Start()
     {
         var numberOfRoomsToBeUnlocked = RoomUnlockManager.Instance.UnlockedRoomsCount;
         for (int i = 0; i < _rooms.Count; i++)
@@ -39,6 +41,11 @@ public class RoomStateManager : MonoBehaviour
             {
                 _rooms[i].ForceUnderlyingElement(ResourceType.Tungsten);
             }
+        }
+
+        foreach (var roomElement in _roomElements)
+        {
+            roomElement.Initialize();
         }
     }
 }

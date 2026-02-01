@@ -87,7 +87,7 @@ public sealed class RoomElement : MonoBehaviour
         _destroyButton.onClick.AddListener(DestroyRoom);
     }
     
-    private void Start()
+    public void Initialize()
     {
         UpdateResourceImages();
         UpdateState();
