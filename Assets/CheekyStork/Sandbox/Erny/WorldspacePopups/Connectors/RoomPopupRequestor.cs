@@ -66,7 +66,7 @@ public class RoomPopupRequestor : PopupRequestor
                 WorldspacePopupData popupData = new WorldspacePopupData(
                     position: positionData,
                     icon: _crossIcon,
-                    text: "insufficient resources",
+                    text: "",
                     iconColor: Color.darkRed);
                 popupsToRequest.Add(popupData);
             }
