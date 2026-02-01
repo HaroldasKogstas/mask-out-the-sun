@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheekyStork.WorldspacePopupManager
   _worldspacePopupPrefab: {fileID: 3666504641946902243, guid: d802624bf2ecdab4a9d1bea4facc152f, type: 3}
+  _worldspaceMultiPopupPrefab: {fileID: 4168722219200849598, guid: a543794685a1804479efdb90222d884a, type: 3}
   _popupRequestEventChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
+  _multiPopupRequestEventChannel: {fileID: 11400000, guid: d2750a9d31abcf24bb5fa5df774f647a, type: 2}
