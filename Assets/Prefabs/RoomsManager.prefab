@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9188420853547952491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5625170519868225892}
+  - component: {fileID: 3205718211021374575}
+  - component: {fileID: 4306059463566019009}
+  m_Layer: 0
+  m_Name: RoomsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5625170519868225892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188420853547952491}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3205718211021374575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188420853547952491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b75bbcf0d618104eaac9e6983a23722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceManager
+  _resources:
+    _iron:
+      _type: 0
+      _amount: 100
+    _tungsten:
+      _type: 1
+      _amount: 100
+    _coal:
+      _type: 2
+      _amount: 100
+    _tungstenPlate:
+      _type: 3
+      _amount: 100
+    _steelPlate:
+      _type: 4
+      _amount: 100
+    _researchData:
+      _type: 5
+      _amount: 100
+    _surveyData:
+      _type: 6
+      _amount: 100
+  _resetProgressOnAwake: {fileID: 11400000, guid: e727d9516848dd642ae411560fbf1070, type: 2}
+  _ironSO: {fileID: 11400000, guid: 2cf71bab0fefca94bb32a87213748152, type: 2}
+  _tungstenSO: {fileID: 11400000, guid: e5c4a690578d7ba42aecd62d7980fa62, type: 2}
+  _coalSO: {fileID: 11400000, guid: 1020ff9eac023d744bc93ed435f353a6, type: 2}
+  _researchDataSO: {fileID: 11400000, guid: 6589283f315ad914b91b44397ca53636, type: 2}
+  _surveyDataSO: {fileID: 11400000, guid: d4f7f96feb2e8014ea67e57d559265ca, type: 2}
+  _steelPlateSO: {fileID: 11400000, guid: 874ec1d10058a4748b8d8990e90c7a19, type: 2}
+  _tungstenPlateSO: {fileID: 11400000, guid: 99acf48f3f621aa44a7753f33c2b63f5, type: 2}
+--- !u!114 &4306059463566019009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188420853547952491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd730f8b8827e564a8a5f62979f81d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomUnlockManager
+  _balanceConfig: {fileID: 11400000, guid: 9eb29c9e91f68fa4ab7f000f7c3ca539, type: 2}
+  _unlockedRoomsCount: 4
+  _resetProgressOnAwake: {fileID: 11400000, guid: e727d9516848dd642ae411560fbf1070, type: 2}

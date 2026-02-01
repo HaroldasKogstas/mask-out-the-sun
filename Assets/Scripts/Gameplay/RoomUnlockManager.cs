@@ -1,3 +1,4 @@
+using CheekyStork.ScriptableVariables;
 using UnityEngine;
 
 public sealed class RoomUnlockManager : MonoBehaviour
@@ -12,6 +13,8 @@ public sealed class RoomUnlockManager : MonoBehaviour
     [SerializeField]
     [Min(0)]
     private int _unlockedRoomsCount;
+    
+    [SerializeField] private BoolSO _resetProgressOnAwake;
 
     public int UnlockedRoomsCount => _unlockedRoomsCount;
 
@@ -26,6 +29,12 @@ public sealed class RoomUnlockManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        if(_resetProgressOnAwake != null && _resetProgressOnAwake.Value)
+        {
+            Save();
+            return;
+        }
+        
         Load();
     }
 

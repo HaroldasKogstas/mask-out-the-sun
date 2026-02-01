@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CheekyStork.ScriptableVariables;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public sealed class ResourceManager : MonoBehaviour
 {
@@ -13,8 +14,7 @@ public sealed class ResourceManager : MonoBehaviour
 
     public ResourceBundle Resources => _resources;
     
-    [SerializeField]
-    private bool _resetOnAwake = false;
+    [SerializeField] private BoolSO _resetProgressOnAwake;
 
     [SerializeField] private IntSO _ironSO;
     [SerializeField] private IntSO _tungstenSO;
@@ -26,6 +26,7 @@ public sealed class ResourceManager : MonoBehaviour
     
     private void AnnounceResourceChange()
     {
+        Debug.Log($"Resource Change Announced: Iron={_resources[ResourceType.Iron]}, Tungsten={_resources[ResourceType.Tungsten]}, Coal={_resources[ResourceType.Coal]}, ResearchData={_resources[ResourceType.ResearchData]}, SurveyData={_resources[ResourceType.SurveyData]}, SteelPlate={_resources[ResourceType.SteelPlate]}, TungstenPlate={_resources[ResourceType.TungstenPlate]}");
         _ironSO.Value = _resources[ResourceType.Iron];
         _tungstenSO.Value = _resources[ResourceType.Tungsten];
         _coalSO.Value = _resources[ResourceType.Coal];
@@ -46,10 +47,10 @@ public sealed class ResourceManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        if (_resetOnAwake)
+        if (_resetProgressOnAwake != null && _resetProgressOnAwake.Value)
         {
-            _resources = new ResourceBundle();
             Save();
+            return;
         }
         
         Load();

@@ -21,6 +21,7 @@ public class ModuleBuildElement : MonoBehaviour
         _button.onClick.RemoveListener(OnButtonClicked);
     }
     
+    
     private void OnButtonClicked()
     {
         _room.TryBuild(_roomType);

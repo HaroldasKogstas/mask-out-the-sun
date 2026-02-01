@@ -70,43 +70,33 @@ public class RoomElement : MonoBehaviour
         UpdateState();
     }
 
+    private void ToggleCanvasGroup(CanvasGroup canvasGroup, bool isActive)
+    {
+        canvasGroup.alpha = isActive ? 1 : 0;
+        canvasGroup.blocksRaycasts = isActive;
+        canvasGroup.interactable = isActive;
+        canvasGroup.gameObject.SetActive(isActive);
+    }
+    
     private void UpdateState()
     {
         if (_room.IsLocked)
         {
-            _lockedCanvasGroup.alpha = 1;
-            _lockedCanvasGroup.blocksRaycasts = true;
-            _lockedCanvasGroup.interactable = true;
-            _unlockedCanvasGroup.alpha = 0;
-            _unlockedCanvasGroup.blocksRaycasts = false;
-            _unlockedCanvasGroup.interactable = false;
-            _builtCanvasGroup.alpha = 0;
-            _builtCanvasGroup.blocksRaycasts = false;
-            _builtCanvasGroup.interactable = false;
+            ToggleCanvasGroup(_lockedCanvasGroup, true);
+            ToggleCanvasGroup(_unlockedCanvasGroup, false);
+            ToggleCanvasGroup(_builtCanvasGroup, false);
         }
         else if (_room.IsBuilt)
         {
-            _lockedCanvasGroup.alpha = 0;
-            _lockedCanvasGroup.blocksRaycasts = false;
-            _lockedCanvasGroup.interactable = false;
-            _unlockedCanvasGroup.alpha = 0;
-            _unlockedCanvasGroup.blocksRaycasts = false;
-            _unlockedCanvasGroup.interactable = false;
-            _builtCanvasGroup.alpha = 1;
-            _builtCanvasGroup.blocksRaycasts = true;
-            _builtCanvasGroup.interactable = true;
+            ToggleCanvasGroup(_lockedCanvasGroup, false);
+            ToggleCanvasGroup(_unlockedCanvasGroup, false);
+            ToggleCanvasGroup(_builtCanvasGroup, true);
         }
         else
         {
-            _lockedCanvasGroup.alpha = 0;
-            _lockedCanvasGroup.blocksRaycasts = false;
-            _lockedCanvasGroup.interactable = false;
-            _unlockedCanvasGroup.alpha = 1;
-            _unlockedCanvasGroup.blocksRaycasts = true;
-            _unlockedCanvasGroup.interactable = true;
-            _builtCanvasGroup.alpha = 0;
-            _builtCanvasGroup.blocksRaycasts = false;
-            _builtCanvasGroup.interactable = false;
+            ToggleCanvasGroup(_lockedCanvasGroup, false);
+            ToggleCanvasGroup(_unlockedCanvasGroup, true);
+            ToggleCanvasGroup(_builtCanvasGroup, false);
         }
     }
 
