@@ -12,7 +12,10 @@ public class CostDisplayer : MonoBehaviour
     [SerializeField]
     private RoomBalanceConfig _roomBalanceConfig;
 
-    private void Awake()
+    [SerializeField]
+    private RoomUnlockManager _roomUnlockManager;
+
+    private void Update()
     {
         UpdateCostDisplays();
     }
@@ -28,11 +31,11 @@ public class CostDisplayer : MonoBehaviour
 
     private int GetCurrentRoomSurveyCost()
     {
-        return 1;
+        return _roomBalanceConfig.GetUnlockCostSurveyData(_roomUnlockManager.UnlockedRoomsCount);
     }
 
     private int GetCurrentRoomBuildCost()
     {
-        return 1;
+        return 10;
     }
 }

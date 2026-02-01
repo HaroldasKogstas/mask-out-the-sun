@@ -57,7 +57,7 @@ public class RoomPopupRequestor : PopupRequestor
             position: positionData,
             icon: _uiConfig.GetResourceIcon(resourceType),
             text: "-" + valueConsumed.ToString(),
-            iconColor: Color.darkRed);
+            iconColor: _uiConfig.GetResourceColor(resourceType));
 
         return popupData;
     }
