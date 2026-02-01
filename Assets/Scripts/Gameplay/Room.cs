@@ -14,6 +14,8 @@ public sealed class Room : MonoBehaviour
     public event Action<Room> Built;
     public event Action<Room, int> Upgraded;
 
+    public event Action<Room> Destroyed;
+
     [Header("Config")]
     [SerializeField]
     private RoomBalanceConfig _balanceConfig;
@@ -45,7 +47,7 @@ public sealed class Room : MonoBehaviour
 
     [SerializeField]
     private float _elapsedSeconds;
-    
+
     [Title("Broadcasting On")]
     [SerializeField]
     private VoidEventChannelSO _rocketLaunchedChannel;
@@ -61,7 +63,7 @@ public sealed class Room : MonoBehaviour
     public bool ForceLockState(bool locked)
     {
         _isLocked = locked;
-        
+
         if (locked)
         {
             _elapsedSeconds = 0f;
@@ -71,10 +73,10 @@ public sealed class Room : MonoBehaviour
         {
             Unlocked?.Invoke(this);
         }
-        
+
         return _isLocked;
     }
-    
+
     public float Progress01
     {
         get
@@ -330,6 +332,28 @@ public sealed class Room : MonoBehaviour
         _elapsedSeconds = 0f;
 
         Upgraded?.Invoke(this, _tierIndex);
+        return true;
+    }
+
+    public bool TryDestroy()
+    {
+        if (_isLocked)
+        {
+            return false;
+        }
+
+        if (!_isBuilt)
+        {
+            return false;
+        }
+
+        _isBuilt = false;
+        _tierIndex = 0;
+        _elapsedSeconds = 0f;
+        _smelterRecipe = SmelterRecipe.SteelPlate;
+        _isRunning = true;
+
+        Destroyed?.Invoke(this);
         return true;
     }
 
