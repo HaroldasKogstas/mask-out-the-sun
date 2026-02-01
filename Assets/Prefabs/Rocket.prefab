@@ -370,7 +370,7 @@ MonoBehaviour:
   _heightTargetForZRotation: 200
   _acceleration: 1
   _destroyTime: 10
-  _nextStagePrefab: {fileID: 179579539854348187, guid: e8d58832c95ad5d40888e659a7f6f1ba, type: 3}
+  _nextStagePrefab: {fileID: 179579539854348187, guid: 3553551db5024164b822ac0758d4dd8e, type: 3}
 --- !u!1 &8810053002190507763
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 8810053002190507763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.21271, z: -0.20238}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 0.1, y: 0.4, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:

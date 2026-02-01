@@ -1,4 +1,6 @@
 using System;
+using CheekyStork.ScriptableChannels;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public sealed class Room : MonoBehaviour
@@ -43,6 +45,10 @@ public sealed class Room : MonoBehaviour
 
     [SerializeField]
     private float _elapsedSeconds;
+    
+    [Title("Broadcasting On")]
+    [SerializeField]
+    private VoidEventChannelSO _rocketLaunchedChannel;
 
     public ResourceType UnderlyingElement => _underlyingElement;
     public bool IsLocked => _isLocked;
@@ -372,6 +378,7 @@ public sealed class Room : MonoBehaviour
         if (_roomType == RoomType.Assembler)
         {
             RocketLaunched?.Invoke(this);
+            _rocketLaunchedChannel?.RaiseEvent();
         }
 
         RoomActionResult result = new RoomActionResult(cost, produced);

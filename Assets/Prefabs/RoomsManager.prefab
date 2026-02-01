@@ -48,25 +48,25 @@ MonoBehaviour:
   _resources:
     _iron:
       _type: 0
-      _amount: 100
+      _amount: 10000
     _tungsten:
       _type: 1
-      _amount: 100
+      _amount: 10000
     _coal:
       _type: 2
-      _amount: 100
+      _amount: 10000
     _tungstenPlate:
       _type: 3
-      _amount: 100
+      _amount: 10000
     _steelPlate:
       _type: 4
-      _amount: 100
+      _amount: 10000
     _researchData:
       _type: 5
-      _amount: 100
+      _amount: 10000
     _surveyData:
       _type: 6
-      _amount: 100
+      _amount: 10000
   _resetProgressOnAwake: {fileID: 11400000, guid: e727d9516848dd642ae411560fbf1070, type: 2}
   _ironSO: {fileID: 11400000, guid: 2cf71bab0fefca94bb32a87213748152, type: 2}
   _tungstenSO: {fileID: 11400000, guid: e5c4a690578d7ba42aecd62d7980fa62, type: 2}
