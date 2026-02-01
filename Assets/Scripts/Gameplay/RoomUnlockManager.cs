@@ -15,7 +15,7 @@ public sealed class RoomUnlockManager : MonoBehaviour
     private int _unlockedRoomsCount;
     
     [SerializeField] private BoolSO _resetProgressOnAwake;
-
+    
     public int UnlockedRoomsCount => _unlockedRoomsCount;
 
     private void Awake()
@@ -31,6 +31,7 @@ public sealed class RoomUnlockManager : MonoBehaviour
 
         if(_resetProgressOnAwake != null && _resetProgressOnAwake.Value)
         {
+            _unlockedRoomsCount = _balanceConfig.FreeRoomsCount;
             Save();
             return;
         }

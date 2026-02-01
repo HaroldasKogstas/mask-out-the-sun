@@ -67,7 +67,7 @@ public sealed class RoomBalanceConfig : ScriptableObject
 
     public int GetUnlockCostSurveyData(int currentlyUnlockedRoomsCount)
     {
-        int extraUnlockedCount = Mathf.Max(0, currentlyUnlockedRoomsCount - _freeRoomsCount);
+        int extraUnlockedCount = Mathf.Max(0, currentlyUnlockedRoomsCount - _freeRoomsCount + 1);
         if (extraUnlockedCount <= 0)
         {
             return 0;
@@ -75,7 +75,7 @@ public sealed class RoomBalanceConfig : ScriptableObject
 
         int index = extraUnlockedCount - 1; // first extra room
         float raw = _unlockBaseSurveyCost * Mathf.Pow(_unlockMultiplier, index);
-        return Mathf.CeilToInt(raw);
+        return Mathf.RoundToInt(raw);
     }
 
     public int MinerOutputAmount => _minerOutputAmount;

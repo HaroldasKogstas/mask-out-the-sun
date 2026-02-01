@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4896699657043916855}
   - component: {fileID: 7098350360225192474}
   - component: {fileID: 2881678978047374219}
+  - component: {fileID: 7621735444387380060}
   m_Layer: 5
   m_Name: UnlockRoomElement
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.49411765, g: 0.49411765, b: 0.49411765, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -136,6 +137,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ModuleUnlockElement
   _button: {fileID: 7098350360225192474}
   _room: {fileID: 0}
+--- !u!65 &7621735444387380060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731528185246983275}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 64, y: 64, z: 1}
+  m_Center: {x: 0, y: 32, z: 0}
 --- !u!1 &3605846008611731526
 GameObject:
   m_ObjectHideFlags: 0

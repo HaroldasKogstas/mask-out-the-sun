@@ -489,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Room
   _balanceConfig: {fileID: 11400000, guid: 9eb29c9e91f68fa4ab7f000f7c3ca539, type: 2}
   _underlyingElement: 0
-  _isLocked: 0
+  _isLocked: 1
   _isBuilt: 0
   _roomType: 0
   _tierIndex: 0

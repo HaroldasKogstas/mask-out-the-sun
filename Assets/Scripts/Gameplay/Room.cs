@@ -52,6 +52,18 @@ public sealed class Room : MonoBehaviour
 
     public SmelterRecipe CurrentSmelterRecipe => _smelterRecipe;
 
+    public bool ForceLockState(bool locked)
+    {
+        _isLocked = locked;
+        
+        if (locked)
+        {
+            _elapsedSeconds = 0f;
+        }
+        
+        return _isLocked;
+    }
+    
     public float Progress01
     {
         get

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b6365a6aa84ce44bc21daeb73a5dd9, type: 3}
   m_Name: RoomBalanceConfig
   m_EditorClassIdentifier: Assembly-CSharp::RoomBalanceConfig
-  _freeRoomsCount: 8
+  _freeRoomsCount: 2
   _unlockBaseSurveyCost: 100
   _unlockMultiplier: 1.2
   _minerOutputAmount: 10
