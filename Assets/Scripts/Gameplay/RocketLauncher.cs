@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using CheekyStork.ScriptableChannels;
+using CheekyStork.ScriptableVariables;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour
@@ -17,6 +19,14 @@ public class RocketLauncher : MonoBehaviour
 
     [SerializeField]
     private float _speed = 5f;
+
+    [SerializeField]
+    private IntSO _rocketsLaunchedSO;
+
+    void Awake()
+    {
+        _rocketsLaunchedSO.Value = 0;        
+    }
 
     void OnEnable()
     {
@@ -39,5 +49,6 @@ public class RocketLauncher : MonoBehaviour
 
         Rocket rocket = Instantiate(_rocketPrefab, launchSite.position, Quaternion.identity);
         rocket.Initialize(_speed);
+        _rocketsLaunchedSO.Value +=1;
     }
 }

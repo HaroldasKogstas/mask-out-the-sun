@@ -34,6 +34,11 @@ public abstract class DysonGenerator : MonoBehaviour
 
     float _previousProgress;
 
+    void Awake()
+    {
+        _progressSO.Value = 0;
+    }
+
     void OnEnable()
     {
         _dysonPartJourneyStartChannelSO.OnEventRaised += OnDysonPartJourneyStart;
