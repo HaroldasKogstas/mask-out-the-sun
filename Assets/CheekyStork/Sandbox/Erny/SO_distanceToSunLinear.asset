@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac8ff7009fee67748a9bd029b63a9312, type: 3}
-  m_Name: SO_distanceToSun
+  m_Name: SO_distanceToSunLinear
   m_EditorClassIdentifier: Assembly-CSharp::CheekyStork.ScriptableVariables.FloatSO
   <IsResetting>k__BackingField: 1
   _resettablesLists:
