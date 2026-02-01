@@ -175,7 +175,7 @@ MonoBehaviour:
     _resourceColor: {r: 0.46408933, g: 0.33530614, b: 0.5188679, a: 1}
   - _resourceType: 2
     _resourceIcon: {fileID: 21300000, guid: 242e496f0aa3a274da6f9e25f81bcde4, type: 3}
-    _resourceColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+    _resourceColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
   - _resourceType: 3
     _resourceIcon: {fileID: 21300000, guid: a6eb37f19feb391499c4a95f7c569361, type: 3}
     _resourceColor: {r: 0.46666667, g: 0.3372549, b: 0.52156866, a: 1}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class RoomElement : MonoBehaviour
     [SerializeField] private Sprite _upgradeEmptyBubbleSprite;
     [SerializeField] private Sprite _upgradeFilledBubbleSprite;
     [SerializeField] private Image _roomImage;
+    [SerializeField] private Image _progressImage;
     [SerializeField] private List<ResourceElement> _resourceElements;
     [SerializeField] private List<Image> _upgradeBubbles;
     [SerializeField] private UIConfig _uiConfig;
@@ -27,12 +29,16 @@ public class RoomElement : MonoBehaviour
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Button _destroyButton;
 
-    private void Start()
+    private void Awake()
     {
         _room.Built += OnRoomBuilt;
         _room.Unlocked += OnRoomUnlocked;
         _room.Upgraded += OnRoomUpgraded;
         _upgradeButton.onClick.AddListener(TryUpgradeRoom);
+    }
+
+    private void Start()
+    {
         UpdateResourceImages();
         UpdateState();
     }
@@ -44,7 +50,16 @@ public class RoomElement : MonoBehaviour
         _room.Upgraded -= OnRoomUpgraded;
         _upgradeButton.onClick.RemoveListener(TryUpgradeRoom);
     }
-    
+
+    private void Update()
+    {
+        if (_room.IsBuilt)
+        {
+            float progress = _room.Progress01;
+            _progressImage.fillAmount = progress;
+        }
+    }
+
     private void TryUpgradeRoom()
     {
         _room.TryUpgrade();

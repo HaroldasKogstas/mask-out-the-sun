@@ -60,6 +60,11 @@ public sealed class Room : MonoBehaviour
         {
             _elapsedSeconds = 0f;
         }
+
+        if (!locked)
+        {
+            Unlocked?.Invoke(this);
+        }
         
         return _isLocked;
     }

@@ -17,7 +17,7 @@ public class TestScript : MonoBehaviour
         Debug.Log($"Room build was successful: {wasSuccess}");
     }
 
-    private void Start()
+    private void Awake()
     {
         _room.Built += OnRoomBuilt;
         _room.ActionSucceeded += RoomActionSucceeded;
