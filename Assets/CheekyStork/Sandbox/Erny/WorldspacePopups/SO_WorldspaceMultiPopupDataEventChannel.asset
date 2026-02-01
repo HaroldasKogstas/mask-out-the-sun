@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 5f0839c79b5877a45808fef4b2fb4484, type: 3}
   m_Name: SO_WorldspaceMultiPopupDataEventChannel
-  m_EditorClassIdentifier: Assembly-CSharp:CheekyStork:WorldspaceMultiPopupDataEventChannelSO
+  m_EditorClassIdentifier: Assembly-CSharp::CheekyStork.WorldspaceMultiPopupDataEventChannelSO
   _description: 
   <NotifyEventRaiseFailed>k__BackingField: 0
   <DebugSenders>k__BackingField: 0

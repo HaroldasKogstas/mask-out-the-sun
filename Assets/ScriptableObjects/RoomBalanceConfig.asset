@@ -23,8 +23,8 @@ MonoBehaviour:
   _surveyorSurveyDataOutput: 10
   _researcherSurveyDataCost: 1
   _researcherResearchDataOutput: 10
-  _assemblerCoalCost: 100
-  _assemblerTungstenCost: 1000
+  _assemblerCoalCost: 25
+  _assemblerTungstenCost: 250
   _balances:
   - _type: 0
     _buildSteelPlateCost: 10
