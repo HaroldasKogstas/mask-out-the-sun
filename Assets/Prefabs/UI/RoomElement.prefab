@@ -601,6 +601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomPopupRequestor
   _popupRequestChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
+  _room: {fileID: 0}
+  _uiConfig: {fileID: 0}
 --- !u!114 &496776118989371865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5964377278787595938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1679,7 +1681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8073145083700711129
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2049,6 +2051,10 @@ PrefabInstance:
       propertyPath: _roomType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7180118122655848807, guid: 70497e326321e1145bab1857968155d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 868c8f0ce1e7b764c8f0490144c58ff9, type: 3}
     - target: {fileID: 7876617301385617313, guid: 70497e326321e1145bab1857968155d9, type: 3}
       propertyPath: m_Name
       value: SurveyorBuildButtonImage
@@ -2276,6 +2282,10 @@ PrefabInstance:
       propertyPath: _button
       value: 
       objectReference: {fileID: 7259706196456678602}
+    - target: {fileID: 7180118122655848807, guid: 70497e326321e1145bab1857968155d9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 63d20516422f7bd438369a5f4a471b11, type: 3}
     - target: {fileID: 7876617301385617313, guid: 70497e326321e1145bab1857968155d9, type: 3}
       propertyPath: m_Name
       value: MinerBuildButtonImage
@@ -2760,7 +2770,7 @@ PrefabInstance:
     - target: {fileID: 7180118122655848807, guid: 70497e326321e1145bab1857968155d9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 801ab1229273e0843a594bbe6a1638ae, type: 3}
+      objectReference: {fileID: 21300000, guid: 87d0154c8f63c8e4ca0ceec94e5920b7, type: 3}
     - target: {fileID: 7876617301385617313, guid: 70497e326321e1145bab1857968155d9, type: 3}
       propertyPath: m_Name
       value: ResearcherBuildButtonImage
