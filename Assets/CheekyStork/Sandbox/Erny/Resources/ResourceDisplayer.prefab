@@ -49,8 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c71653113400f4097117c4fbfcf7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResourceDisplayer
+  _resourceType: 0
   _valueToDisplay: {fileID: 0}
   _textDisplay: {fileID: 4349220902685998409}
+  _iconDisplay: {fileID: 1256297955907637760}
+  _uiConfig: {fileID: 11400000, guid: bf86a2225fe0d5b47b550ccb168130d0, type: 2}
 --- !u!1 &8500235536111384441
 GameObject:
   m_ObjectHideFlags: 0

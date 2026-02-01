@@ -392,9 +392,9 @@ GameObject:
   - component: {fileID: 794282941621381704}
   - component: {fileID: 5374961404145226583}
   - component: {fileID: 8233672324940835249}
-  - component: {fileID: 8820231778787573346}
   - component: {fileID: 496776118989371865}
   - component: {fileID: 3435369785456982156}
+  - component: {fileID: 8820231778787573346}
   m_Layer: 5
   m_Name: RoomElement
   m_TagString: Untagged
@@ -463,19 +463,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8820231778787573346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2210071478522085406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78dc702485d1d444885c701f5e423882, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RoomPopupRequestor
-  _popupRequestChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
 --- !u!114 &496776118989371865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +517,21 @@ MonoBehaviour:
   _roomNameText: {fileID: 1097280363472362913}
   _upgradeButton: {fileID: 3209392542319617110}
   _destroyButton: {fileID: 3679373223877391432}
+--- !u!114 &8820231778787573346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210071478522085406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78dc702485d1d444885c701f5e423882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomPopupRequestor
+  _popupRequestChannel: {fileID: 11400000, guid: cbd81ecf31ea7954fa9b38e676e9438e, type: 2}
+  _room: {fileID: 496776118989371865}
+  _uiConfig: {fileID: 11400000, guid: bf86a2225fe0d5b47b550ccb168130d0, type: 2}
 --- !u!1 &2613042949323975025
 GameObject:
   m_ObjectHideFlags: 0

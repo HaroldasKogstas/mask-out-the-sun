@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraYSetter
   FloatToRespondTo: {fileID: 11400000, guid: 89587122e82e7194c8e8f5de260b448e, type: 2}
   InvertResponse: 0
-  MinValue: -6
+  MinValue: -5.704
   MaxValue: -3.64
   _cameraToMove: {fileID: 3066257927178123686}
 --- !u!1 &8320086873985051885

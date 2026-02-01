@@ -1,19 +1,24 @@
-using UnityEngine;
-using TMPro;
 using DG.Tweening;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Splines;
+using UnityEngine.UI;
 
 namespace CheekyStork
 {
     public class WorldspacePopup : MonoBehaviour
     {
         [SerializeField]
+        private Image _sprite;
+
+        [SerializeField]
         private TextMeshProUGUI _text;
 
         public void Initialize(WorldspacePopupData popupData)
         {
             _text.text = popupData.Text;
-            //_text.color = popupData.VisualProfile.TextColor;
-            //_text.fontSize *= popupData.VisualProfile.FontSizeMultiplier;
+            _sprite.sprite = popupData.Icon;
+            _sprite.color = popupData.IconColor;
 
             DoAnimation(popupData.Duration);
         }
