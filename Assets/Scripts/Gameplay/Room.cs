@@ -7,6 +7,8 @@ public sealed class Room : MonoBehaviour
 
     public event Action<Room, RoomActionResult> ActionSucceeded;
     public event Action<Room, ResourceBundle> ActionFailed;
+
+    public event Action<Room> Unlocked;
     public event Action<Room> Built;
     public event Action<Room, int> Upgraded;
 
@@ -19,6 +21,9 @@ public sealed class Room : MonoBehaviour
     private ResourceType _underlyingElement = ResourceType.Iron; // only Iron/Tungsten/Coal expected
 
     [Header("Room state")]
+    [SerializeField]
+    private bool _isLocked;
+
     [SerializeField]
     private bool _isBuilt;
 
@@ -40,6 +45,7 @@ public sealed class Room : MonoBehaviour
     private float _elapsedSeconds;
 
     public ResourceType UnderlyingElement => _underlyingElement;
+    public bool IsLocked => _isLocked;
     public bool IsBuilt => _isBuilt;
     public RoomType Type => _roomType;
     public int TierIndex => _tierIndex;
@@ -50,7 +56,7 @@ public sealed class Room : MonoBehaviour
     {
         get
         {
-            if (!_isBuilt || !_isRunning)
+            if (_isLocked || !_isBuilt || !_isRunning)
             {
                 return 0f;
             }
@@ -67,7 +73,7 @@ public sealed class Room : MonoBehaviour
 
     private void Update()
     {
-        if (!_isBuilt || !_isRunning)
+        if (_isLocked || !_isBuilt || !_isRunning)
         {
             return;
         }
@@ -113,10 +119,98 @@ public sealed class Room : MonoBehaviour
         _smelterRecipe = recipe;
     }
 
+    public int GetUnlockCostSurveyData()
+    {
+        if (_balanceConfig == null)
+        {
+            return 0;
+        }
+
+        if (!_isLocked)
+        {
+            return 0;
+        }
+
+        RoomUnlockManager unlockManager = RoomUnlockManager.Instance;
+        if (unlockManager == null)
+        {
+            return 0;
+        }
+
+        return unlockManager.GetNextUnlockCostSurveyData();
+    }
+
+    public bool TryUnlock()
+    {
+        if (_balanceConfig == null)
+        {
+            return false;
+        }
+
+        if (!_isLocked)
+        {
+            return false;
+        }
+
+        RoomUnlockManager unlockManager = RoomUnlockManager.Instance;
+        if (unlockManager == null)
+        {
+            return false;
+        }
+
+        ResourceManager resourceManager = ResourceManager.Instance;
+        if (resourceManager == null)
+        {
+            return false;
+        }
+
+        int costAmount = unlockManager.GetNextUnlockCostSurveyData();
+        if (costAmount <= 0)
+        {
+            _isLocked = false;
+            _elapsedSeconds = 0f;
+            Unlocked?.Invoke(this);
+            return true;
+        }
+
+        ResourceBundle cost = new ResourceBundle();
+        cost[ResourceType.SurveyData] = costAmount;
+
+        if (!resourceManager.TryRemoveResourceBundle(cost))
+        {
+            ResourceBundle lacking = BuildLackingBundle(cost, resourceManager.Resources);
+            ActionFailed?.Invoke(this, lacking);
+            return false;
+        }
+
+        unlockManager.RegisterUnlockConsumed();
+        _isLocked = false;
+        _elapsedSeconds = 0f;
+
+        Unlocked?.Invoke(this);
+        return true;
+    }
+
     public bool TryBuild(RoomType typeToBuild)
     {
         if (_balanceConfig == null)
         {
+            return false;
+        }
+
+        if (_isLocked)
+        {
+            ResourceManager managerLocked = ResourceManager.Instance;
+            if (managerLocked != null)
+            {
+                ResourceBundle lacking = new ResourceBundle();
+                lacking[ResourceType.SurveyData] = Mathf.Max(0, GetUnlockCostSurveyData());
+                if (lacking[ResourceType.SurveyData] > 0)
+                {
+                    ActionFailed?.Invoke(this, lacking);
+                }
+            }
+
             return false;
         }
 
@@ -159,7 +253,7 @@ public sealed class Room : MonoBehaviour
             return 0;
         }
 
-        if (!_isBuilt)
+        if (_isLocked || !_isBuilt)
         {
             return 0;
         }
@@ -180,7 +274,7 @@ public sealed class Room : MonoBehaviour
             return false;
         }
 
-        if (!_isBuilt)
+        if (_isLocked || !_isBuilt)
         {
             return false;
         }
@@ -274,7 +368,7 @@ public sealed class Room : MonoBehaviour
             return false;
         }
 
-        if (!_isBuilt)
+        if (_isLocked || !_isBuilt)
         {
             return false;
         }

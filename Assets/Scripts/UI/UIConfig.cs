@@ -12,11 +12,13 @@ public class UIConfig : ScriptableObject
         [SerializeField] private Sprite _roomSpriteDefault;
         [SerializeField] private Sprite _roomIcon;
         [SerializeField] private List<Sprite> _roomActiveFrames = new();
+        [SerializeField] private string _roomName;
         
         public RoomType RoomType => _roomType;
         public Sprite RoomSpriteDefault => _roomSpriteDefault;
         public Sprite RoomIcon => _roomIcon;
         public List<Sprite> RoomActiveFrames => _roomActiveFrames;
+        public string RoomName => _roomName;
     }
 
     [Serializable]
@@ -33,6 +35,12 @@ public class UIConfig : ScriptableObject
     
     [SerializeField] private List<RoomTypeUISet> _roomTypeUISets = new();
     [SerializeField] private List<ResourceTypeUISet> _resourceTypeUISets = new();
+    
+    public string GetRoomName(RoomType roomType)
+    {
+        var set = _roomTypeUISets.Find(x => x.RoomType == roomType);
+        return set != null ? set.RoomName : string.Empty;
+    }
     
     public Sprite GetRoomSpriteDefault(RoomType roomType)
     {

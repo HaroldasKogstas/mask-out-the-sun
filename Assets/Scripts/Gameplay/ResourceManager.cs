@@ -55,6 +55,7 @@ public sealed class ResourceManager : MonoBehaviour
         Load();
     }
 
+    // TODO: Erny - Make sure all adding/removing of resources sends updates to the UI
     public void AddResource(ResourceData data)
     {
         if (data == null)
