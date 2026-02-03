@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Game/Rooms/Room Balance Config")]
 public sealed class RoomBalanceConfig : ScriptableObject
@@ -57,7 +58,7 @@ public sealed class RoomBalanceConfig : ScriptableObject
 
     [SerializeField]
     [Min(0)]
-    private int _assemblerTungstenCost = 1000;
+    private int _assemblerTungstenPlateCost = 1000;
 
     [Header("Per-room balance")]
     [SerializeField]
@@ -91,7 +92,7 @@ public sealed class RoomBalanceConfig : ScriptableObject
     public int ResearcherResearchDataOutput => _researcherResearchDataOutput;
 
     public int AssemblerCoalCost => _assemblerCoalCost;
-    public int AssemblerTungstenCost => _assemblerTungstenCost;
+    public int AssemblerTungstenPlateCost => _assemblerTungstenPlateCost;
 
     public RoomTypeBalance GetBalance(RoomType type)
     {

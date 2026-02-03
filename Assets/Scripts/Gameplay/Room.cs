@@ -143,6 +143,12 @@ public sealed class Room : MonoBehaviour
                 break;
             }
         }
+        
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            //add 1000 of every resource for testing
+            ResourceManager.Instance.AddResourceBundle(new ResourceBundle() { [ResourceType.SurveyData] = 1000, [ResourceType.ResearchData] = 1000, [ResourceType.Iron] = 1000, [ResourceType.Tungsten] = 1000, [ResourceType.Coal] = 1000, [ResourceType.SteelPlate] = 1000, [ResourceType.TungstenPlate] = 1000 });
+        }
     }
 
     public void SetRunning(bool running)
@@ -484,7 +490,7 @@ public sealed class Room : MonoBehaviour
         if (_roomType == RoomType.Assembler)
         {
             cost[ResourceType.Coal] = _balanceConfig.AssemblerCoalCost;
-            cost[ResourceType.Tungsten] = _balanceConfig.AssemblerTungstenCost;
+            cost[ResourceType.TungstenPlate] = _balanceConfig.AssemblerTungstenPlateCost;
             return true;
         }
 
