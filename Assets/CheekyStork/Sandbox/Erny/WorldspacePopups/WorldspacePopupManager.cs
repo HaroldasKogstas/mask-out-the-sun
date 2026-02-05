@@ -1,3 +1,4 @@
+using CheekyStork.Pooling;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,8 +20,13 @@ namespace CheekyStork
         [SerializeField]
         private WorldspaceMultiPopupDataEventChannelSO _multiPopupRequestEventChannel;
 
+        private ObjectPoolHandler<WorldspacePopup> _worldspacePopupPool;
+        private ObjectPoolHandler<WorldSpaceMultiPopup> _worldspaceMultiPopupPool;
+
         private void Awake()
         {
+            CreatePopupPool();
+
             _popupRequestEventChannel.OnEventRaised += SpawnPopup;
             _multiPopupRequestEventChannel.OnEventRaised += SpawnMultiPopup;
         }
@@ -29,6 +35,21 @@ namespace CheekyStork
         {
             _popupRequestEventChannel.OnEventRaised -= SpawnPopup;
             _multiPopupRequestEventChannel.OnEventRaised -= SpawnMultiPopup;
+        }
+
+        private void CreatePopupPool()
+        {
+            _worldspacePopupPool = new ObjectPoolHandler<WorldspacePopup>(
+                prefabToPool: _worldspacePopupPrefab,
+                parentTransform: transform,
+                poolCapacity: 50,
+                preInstantiatePool: true);
+
+            _worldspaceMultiPopupPool = new ObjectPoolHandler<WorldSpaceMultiPopup>(
+                prefabToPool: _worldspaceMultiPopupPrefab,
+                parentTransform: transform,
+                poolCapacity: 50,
+                preInstantiatePool: true);
         }
 
         private void SpawnPopup(WorldspacePopupData popupData)
@@ -43,8 +64,9 @@ namespace CheekyStork
 
             Vector3 worldPosition = popupData.Position + new Vector3(randomOffsetX * 0.01f, 0f, 0f);
 
-            WorldspacePopup popupInstance = Instantiate(_worldspacePopupPrefab, worldPosition, Quaternion.identity);
+            WorldspacePopup popupInstance = _worldspacePopupPool.Get();
 
+            popupInstance.transform.SetPositionAndRotation(worldPosition, Quaternion.identity);
             popupInstance.Initialize(popupData);
         }
 
@@ -54,11 +76,17 @@ namespace CheekyStork
 
             Vector3 worldPosition = multiPopupData.Position + new Vector3(randomOffsetX * 0.01f, 0f, 0f);
 
-            WorldSpaceMultiPopup multiPopupInstance = Instantiate(_worldspaceMultiPopupPrefab, worldPosition, Quaternion.identity);
+            WorldSpaceMultiPopup multiPopupInstance = _worldspaceMultiPopupPool.Get();
+
+            multiPopupInstance.transform.SetPositionAndRotation(worldPosition, Quaternion.identity);
+            multiPopupInstance.Initialize(multiPopupData.Popups[0]);
 
             for (int i = 0; i < multiPopupData.Popups.Count; i++)
             {
-                WorldspacePopup popupInstance = Instantiate(_worldspacePopupPrefab, multiPopupInstance.transform);
+                WorldspacePopup popupInstance = _worldspacePopupPool.Get();
+
+                popupInstance.transform.SetPositionAndRotation(worldPosition, Quaternion.identity);
+                popupInstance.transform.SetParent(multiPopupInstance.transform);
                 popupInstance.Initialize(multiPopupData.Popups[i]);
             }
         }
