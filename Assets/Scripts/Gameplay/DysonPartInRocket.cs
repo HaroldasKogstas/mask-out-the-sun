@@ -17,15 +17,14 @@ public class DysonPartInRocket : MonoBehaviour
 
     [Header("Trajectory")]
     [SerializeField] private float _travelTime = 5f;
-    [SerializeField, Range(0, 1), Tooltip("Arc intensity (0=straight, 1=max curve). Internally scaled to safe values.")]
-    private float _arc = 0.5f;
     [SerializeField] private AnimationCurve _easingCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
+    [SerializeField, Range(0, 1), Tooltip("How far out control points extend (0=straight, 1=wide curve)")]
+    private float _curveAmount = 0.4f;
+    
     [Header("Obstacle Avoidance")]
     [SerializeField] private Vector3 _obstacleCenter = Vector3.zero;
-    [SerializeField] private float _obstacleRadius = 1f;
-    [SerializeField, Tooltip("Safety clearance added to obstacle radius")]
-    private float _obstacleSafetyMargin = 0.5f;
+    [SerializeField, Tooltip("Control points will be placed this far from obstacle")]
+    private float _obstacleAvoidanceDistance = 2f;
 
     [Header("Visual Effects")]
     [SerializeField] private TrailRenderer _trail;
@@ -48,15 +47,18 @@ public class DysonPartInRocket : MonoBehaviour
     private float _arrivalTime;
     private Coroutine _coroutine;
 
-    // Trajectory calculation
-    private Vector3 _startPosition;
-    private Vector3 _targetStartPosition;
-    private Vector3 _arcDirection;
+    // Bezier curve control points
+    private Vector3 _p0; // Start position (fixed)
+    private Vector3 _p1; // First control point (fixed)
+    private Vector3 _p2; // Second control point (updates with target)
+    private Vector3 _p3; // End position (updates with target)
 
-    // Velocity tracking for orbital matching
+    // Curve length tracking for consistent speed
+    private float _initialCurveLength;
+    private float _distanceTraveled;
+
+    // Velocity tracking for orientation
     private Vector3 _previousPosition;
-    private Vector3 _previousTargetPosition;
-    private Vector3 _targetOrbitalVelocity;
 
     // Visual effect caching
     private Vector3 _initialSphereScale;
@@ -64,27 +66,19 @@ public class DysonPartInRocket : MonoBehaviour
     private Color _initialTrailStartColor;
     private Color _initialTrailEndColor;
 
-    // Constants
-    private const float MAX_ARC_RATIO = 0.3f; // Max arc is 30% of travel distance
-    private const float ORBITAL_BLEND_START = 0.7f; // Start velocity matching at 70% progress
-    private const float ORBITAL_BLEND_END = 0.95f; // Stop at 95% to ensure exact arrival
-    private const float ORBITAL_BLEND_STRENGTH = 0.5f; // Max velocity influence
-
     public void Initialize()
     {
         _isActive = true;
-        _startPosition = transform.position;
         _previousPosition = transform.position;
         _elapsedTime = 0f;
-
         _target = _nextDysonPartTransformSO.Value;
 
-        // Track initial target position for orbital velocity
-        _targetStartPosition = _target.position;
-        _previousTargetPosition = _target.position;
-        _targetOrbitalVelocity = Vector3.zero;
-
-        CalculateArcDirection();
+        // Calculate fixed Bezier control points
+        CalculateBezierControlPoints();
+        
+        // Calculate initial curve length for speed consistency
+        _initialCurveLength = EstimateCurveLength();
+        _distanceTraveled = 0f;
 
         // Store initial sphere scale for squish effect
         if (_sphereMesh != null)
@@ -103,23 +97,50 @@ public class DysonPartInRocket : MonoBehaviour
         _dysonPartJourneyStartChannelSO.RaiseEvent();
     }
 
-    private void CalculateArcDirection()
+    private void CalculateBezierControlPoints()
     {
-        Vector3 targetPosition = _target.position;
-        Vector3 travelDirection = (targetPosition - _startPosition).normalized;
-        Vector3 midPoint = (_startPosition + targetPosition) / 2f;
-        Vector3 toObstacle = _obstacleCenter - midPoint;
+        _p0 = transform.position; // Start (fixed)
+        Vector3 targetPos = _target.position;
         
-        _arcDirection = Vector3.Cross(travelDirection, toObstacle.normalized);
-        if (_arcDirection.magnitude < 0.01f)
+        float distance = Vector3.Distance(_p0, targetPos);
+        Vector3 toTarget = (targetPos - _p0).normalized;
+        
+        // Calculate direction away from obstacle
+        Vector3 toObstacle = (_obstacleCenter - _p0).normalized;
+        Vector3 awayFromObstacle = -toObstacle;
+        
+        // P1: Control point extends from start, away from obstacle
+        Vector3 p1Direction = (toTarget + awayFromObstacle).normalized;
+        _p1 = _p0 + p1Direction * (distance * _curveAmount);
+        
+        // Ensure P1 is outside obstacle avoidance zone
+        if (Vector3.Distance(_p1, _obstacleCenter) < _obstacleAvoidanceDistance)
         {
-            _arcDirection = Vector3.Cross(travelDirection, Vector3.up);
-            if (_arcDirection.magnitude < 0.01f)
-            {
-                _arcDirection = Vector3.Cross(travelDirection, Vector3.forward);
-            }
+            Vector3 fromObstacle = (_p1 - _obstacleCenter).normalized;
+            _p1 = _obstacleCenter + fromObstacle * _obstacleAvoidanceDistance;
         }
-        _arcDirection = _arcDirection.normalized;
+    }
+    
+    private void UpdateDynamicBezierPoints()
+    {
+        // P3 always tracks target position
+        _p3 = _target.position;
+        
+        float distance = Vector3.Distance(_p0, _p3);
+        Vector3 toTarget = (_p3 - _p0).normalized;
+        Vector3 toObstacle = (_obstacleCenter - _p3).normalized;
+        Vector3 awayFromObstacle = -toObstacle;
+        
+        // P2: Control point extends back from target, away from obstacle  
+        Vector3 p2Direction = (-toTarget + awayFromObstacle).normalized;
+        _p2 = _p3 + p2Direction * (distance * _curveAmount);
+        
+        // Ensure P2 is outside obstacle avoidance zone
+        if (Vector3.Distance(_p2, _obstacleCenter) < _obstacleAvoidanceDistance)
+        {
+            Vector3 fromObstacle = (_p2 - _obstacleCenter).normalized;
+            _p2 = _obstacleCenter + fromObstacle * _obstacleAvoidanceDistance;
+        }
     }
 
     void Update()
@@ -160,23 +181,25 @@ public class DysonPartInRocket : MonoBehaviour
 
     private void UpdateFlightTrajectory(float t)
     {
-        // Track target orbital motion
-        UpdateTargetVelocity();
+        // Update control points to follow moving target
+        UpdateDynamicBezierPoints();
 
-        // Calculate position with arc trajectory
-        Vector3 newPosition = CalculateTrajectoryPosition(t);
-
-        // Blend toward orbital velocity as we approach
-        newPosition = ApplyOrbitalVelocityBlending(newPosition, t);
-
-        // Ensure we never enter the obstacle
-        newPosition = EnforceObstacleAvoidance(newPosition);
-
-        // In final 5%, smoothly blend to exact target position to eliminate snap
-        if (t > 0.95f)
+        // Calculate desired speed based on initial curve length
+        float desiredSpeed = _initialCurveLength / _travelTime;
+        
+        // Calculate position on Bezier curve
+        float easedT = _easingCurve.Evaluate(t);
+        Vector3 newPosition = CalculateCubicBezier(_p0, _p1, _p2, _p3, easedT);
+        
+        // Limit movement to maintain consistent speed
+        Vector3 movement = newPosition - transform.position;
+        float frameMoveDistance = movement.magnitude;
+        float maxFrameDistance = desiredSpeed * Time.deltaTime * 2f; // 2x for safety margin
+        
+        if (frameMoveDistance > maxFrameDistance)
         {
-            float finalBlend = (t - 0.95f) / 0.05f; // 0 to 1 over last 5%
-            newPosition = Vector3.Lerp(newPosition, _target.position, finalBlend);
+            // Cap the movement to prevent sudden speed ups
+            newPosition = transform.position + movement.normalized * maxFrameDistance;
         }
 
         // Orient rocket toward movement direction
@@ -187,77 +210,39 @@ public class DysonPartInRocket : MonoBehaviour
         transform.position = newPosition;
     }
 
-    private void UpdateTargetVelocity()
+    private Vector3 CalculateCubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
-        Vector3 currentTargetPosition = _target.position;
-        _targetOrbitalVelocity = (currentTargetPosition - _previousTargetPosition) / Time.deltaTime;
-        _previousTargetPosition = currentTargetPosition;
+        // Cubic Bezier formula: B(t) = (1-t)³P0 + 3(1-t)²tP1 + 3(1-t)t²P2 + t³P3
+        float u = 1f - t;
+        float tt = t * t;
+        float uu = u * u;
+        float uuu = uu * u;
+        float ttt = tt * t;
+
+        Vector3 point = uuu * p0; // (1-t)³ * P0
+        point += 3f * uu * t * p1; // 3(1-t)² * t * P1
+        point += 3f * u * tt * p2; // 3(1-t) * t² * P2
+        point += ttt * p3; // t³ * P3
+
+        return point;
     }
 
-    private Vector3 CalculateTrajectoryPosition(float t)
+    private float EstimateCurveLength()
     {
-        float easedT = _easingCurve.Evaluate(t);
-        Vector3 currentTargetPosition = _target.position;
+        // Approximate curve length by sampling points
+        int samples = 20;
+        float totalLength = 0f;
+        Vector3 previousPoint = _p0;
         
-        // Base linear interpolation toward moving target
-        Vector3 linearPosition = Vector3.Lerp(_startPosition, currentTargetPosition, easedT);
-        
-        // Calculate arc to avoid obstacle and add visual curve
-        float arcHeight = CalculateArcHeight(t, linearPosition);
-        
-        return linearPosition + _arcDirection * arcHeight;
-    }
-
-    private float CalculateArcHeight(float t, Vector3 linearPosition)
-    {
-        float travelDistance = Vector3.Distance(_startPosition, _targetStartPosition);
-        
-        // Base arc for visual curve
-        float baseArcHeight = _arc * travelDistance * MAX_ARC_RATIO;
-        
-        // Extra arc if too close to obstacle
-        float distanceToObstacle = Vector3.Distance(linearPosition, _obstacleCenter);
-        float requiredClearance = _obstacleRadius + _obstacleSafetyMargin;
-        float clearanceArcHeight = Mathf.Max(0, requiredClearance - distanceToObstacle);
-        
-        // Use sine wave so arc naturally goes to 0 at arrival
-        float arcMultiplier = Mathf.Sin(t * Mathf.PI);
-        
-        return Mathf.Max(baseArcHeight, clearanceArcHeight) * arcMultiplier;
-    }
-
-    private Vector3 ApplyOrbitalVelocityBlending(Vector3 position, float t)
-    {
-        // Calculate blend factor (ramps up, then down near arrival)
-        float blendRange = ORBITAL_BLEND_END - ORBITAL_BLEND_START;
-        float orbitalBlend = Mathf.Clamp01((t - ORBITAL_BLEND_START) / blendRange);
-        orbitalBlend = Mathf.Min(orbitalBlend, 1f - (t - ORBITAL_BLEND_END) / (1f - ORBITAL_BLEND_END));
-        
-        if (orbitalBlend <= 0 || _targetOrbitalVelocity.sqrMagnitude < 0.001f)
-            return position;
-
-        // Blend our velocity toward target's orbital velocity
-        Vector3 ourVelocity = (position - _previousPosition) / Time.deltaTime;
-        Vector3 blendedVelocity = Vector3.Lerp(ourVelocity, _targetOrbitalVelocity, orbitalBlend * ORBITAL_BLEND_STRENGTH);
-        
-        // Apply velocity adjustment
-        Vector3 velocityOffset = (blendedVelocity - ourVelocity) * Time.deltaTime * orbitalBlend;
-        return position + velocityOffset;
-    }
-
-    private Vector3 EnforceObstacleAvoidance(Vector3 position)
-    {
-        Vector3 toPosition = position - _obstacleCenter;
-        float currentDistance = toPosition.magnitude;
-        float minimumDistance = _obstacleRadius + _obstacleSafetyMargin;
-        
-        if (currentDistance < minimumDistance)
+        for (int i = 1; i <= samples; i++)
         {
-            // Push radially outward to safe distance
-            return _obstacleCenter + toPosition.normalized * minimumDistance;
+            float t = (float)i / samples;
+            Vector3 currentPoint = CalculateCubicBezier(_p0, _p1, _p2, _p3, t);
+            totalLength += Vector3.Distance(previousPoint, currentPoint);
+            previousPoint = currentPoint;
         }
         
-        return position;
+        return totalLength;
     }
 
     private void UpdateOrientation(Vector3 newPosition)
