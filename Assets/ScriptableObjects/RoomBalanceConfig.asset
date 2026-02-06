@@ -19,50 +19,61 @@ MonoBehaviour:
   _smelterCoalCost: 1
   _smelterMetalCost: 10
   _smelterPlateOutput: 10
-  _surveyorTungstenPlateCost: 1
+  _surveyorTungstenPlateCost: 10
   _surveyorSurveyDataOutput: 10
-  _researcherSurveyDataCost: 1
+  _researcherSurveyDataCost: 10
   _researcherResearchDataOutput: 10
-  _assemblerCoalCost: 25
-  _assemblerTungstenCost: 250
+  _assemblerCoalCost: 10
+  _assemblerTungstenPlateCost: 100
+  _assemblerSteelPlateCost: 100
   _balances:
   - _type: 0
-    _buildSteelPlateCost: 10
+    _buildSteelPlateCost: 100
     _actionSecondsByTier:
     - 16
-    - 8
-    - 4
-    - 2
-    _upgradeResearchCostByStep: 
+    - 10
+    - 6
+    - 3
+    - 1.8
+    - 1
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 1
-    _buildSteelPlateCost: 10
+    _buildSteelPlateCost: 100
     _actionSecondsByTier:
     - 16
-    - 8
-    - 4
-    - 2
-    _upgradeResearchCostByStep: 0a00000064000000e8030000
+    - 10
+    - 6
+    - 3
+    - 1.8
+    - 1
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 2
-    _buildSteelPlateCost: 10
+    _buildSteelPlateCost: 100
     _actionSecondsByTier:
     - 16
-    - 8
-    - 4
-    - 2
-    _upgradeResearchCostByStep: 0a00000064000000e8030000
+    - 10
+    - 6
+    - 3
+    - 1.8
+    - 1
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 3
-    _buildSteelPlateCost: 10
+    _buildSteelPlateCost: 100
     _actionSecondsByTier:
     - 16
-    - 8
-    - 4
-    - 2
-    _upgradeResearchCostByStep: 0a00000064000000e8030000
+    - 10
+    - 6
+    - 3
+    - 1.8
+    - 1
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 4
-    _buildSteelPlateCost: 0
+    _buildSteelPlateCost: 100
     _actionSecondsByTier:
     - 16
-    - 8
-    - 4
-    - 2
-    _upgradeResearchCostByStep: 0a00000064000000e8030000
+    - 10
+    - 6
+    - 3
+    - 1.8
+    - 1
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CheekyStork.ScriptableVariables;
 using UnityEngine;
@@ -54,6 +55,14 @@ public sealed class ResourceManager : MonoBehaviour
         }
         
         Load();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+           AddResourceBundle(new ResourceBundle() { [ResourceType.SurveyData] = 1000, [ResourceType.ResearchData] = 1000, [ResourceType.Iron] = 1000, [ResourceType.Tungsten] = 1000, [ResourceType.Coal] = 1000, [ResourceType.SteelPlate] = 1000, [ResourceType.TungstenPlate] = 1000 });
+        }
     }
 
     // TODO: Erny - Make sure all adding/removing of resources sends updates to the UI

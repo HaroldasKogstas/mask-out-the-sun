@@ -36,7 +36,7 @@ public sealed class Room : MonoBehaviour
     private RoomType _roomType;
 
     [SerializeField]
-    [Range(0, 3)]
+    [Range(0, 5)]
     private int _tierIndex;
 
     [Header("Smelter UI selection")]
@@ -142,12 +142,6 @@ public sealed class Room : MonoBehaviour
             {
                 break;
             }
-        }
-        
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            //add 1000 of every resource for testing
-            ResourceManager.Instance.AddResourceBundle(new ResourceBundle() { [ResourceType.SurveyData] = 1000, [ResourceType.ResearchData] = 1000, [ResourceType.Iron] = 1000, [ResourceType.Tungsten] = 1000, [ResourceType.Coal] = 1000, [ResourceType.SteelPlate] = 1000, [ResourceType.TungstenPlate] = 1000 });
         }
     }
 
@@ -305,7 +299,7 @@ public sealed class Room : MonoBehaviour
             return 0;
         }
 
-        if (_tierIndex >= 3)
+        if (_tierIndex >= 5)
         {
             return 0;
         }
@@ -326,7 +320,7 @@ public sealed class Room : MonoBehaviour
             return false;
         }
 
-        if (_tierIndex >= 3)
+        if (_tierIndex >= 5)
         {
             return false;
         }
@@ -491,6 +485,7 @@ public sealed class Room : MonoBehaviour
         {
             cost[ResourceType.Coal] = _balanceConfig.AssemblerCoalCost;
             cost[ResourceType.TungstenPlate] = _balanceConfig.AssemblerTungstenPlateCost;
+            cost[ResourceType.SteelPlate] = _balanceConfig.AssemblerSteelPlateCost;
             return true;
         }
 

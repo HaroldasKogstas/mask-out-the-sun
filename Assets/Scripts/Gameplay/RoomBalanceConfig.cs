@@ -54,11 +54,16 @@ public sealed class RoomBalanceConfig : ScriptableObject
 
     [SerializeField]
     [Min(0)]
-    private int _assemblerCoalCost = 100;
+    private int _assemblerCoalCost = 10;
 
     [SerializeField]
     [Min(0)]
-    private int _assemblerTungstenPlateCost = 1000;
+    private int _assemblerTungstenPlateCost = 100;
+    
+    [SerializeField]
+    [Min(0)]
+    private int _assemblerSteelPlateCost = 100;
+    
 
     [Header("Per-room balance")]
     [SerializeField]
@@ -93,7 +98,8 @@ public sealed class RoomBalanceConfig : ScriptableObject
 
     public int AssemblerCoalCost => _assemblerCoalCost;
     public int AssemblerTungstenPlateCost => _assemblerTungstenPlateCost;
-
+    public int AssemblerSteelPlateCost => _assemblerSteelPlateCost;
+    
     public RoomTypeBalance GetBalance(RoomType type)
     {
         for (int i = 0; i < _balances.Count; i++)
@@ -165,18 +171,18 @@ public sealed class RoomBalanceConfig : ScriptableObject
                 return DefaultActionSeconds(tierIndex);
             }
 
-            int clamped = Mathf.Clamp(tierIndex, 0, 3);
+            int clamped = Mathf.Clamp(tierIndex, 0, 5);
             return Mathf.Max(0.01f, _actionSecondsByTier[clamped]);
         }
 
         public int GetUpgradeResearchCostToNextTier(int currentTierIndex)
         {
-            if (currentTierIndex < 0 || currentTierIndex >= 3)
+            if (currentTierIndex < 0 || currentTierIndex >= 5)
             {
                 return 0;
             }
 
-            if (_upgradeResearchCostByStep == null || _upgradeResearchCostByStep.Length < 3)
+            if (_upgradeResearchCostByStep == null || _upgradeResearchCostByStep.Length < 5)
             {
                 return DefaultUpgradeCost(currentTierIndex);
             }
@@ -190,8 +196,8 @@ public sealed class RoomBalanceConfig : ScriptableObject
             {
                 _type = type,
                 _buildSteelPlateCost = 0,
-                _actionSecondsByTier = new float[4] { 16f, 8f, 4f, 2f },
-                _upgradeResearchCostByStep = new int[3] { 10, 100, 1000 }
+                _actionSecondsByTier = new float[6] { 16f, 8f, 4f, 2f, 1f, 0.5f },
+                _upgradeResearchCostByStep = new int[5] { 10, 50, 250, 1250, 6000 }
             };
 
             return balance;
@@ -199,18 +205,22 @@ public sealed class RoomBalanceConfig : ScriptableObject
 
         private static float DefaultActionSeconds(int tierIndex)
         {
-            int clamped = Mathf.Clamp(tierIndex, 0, 3);
+            int clamped = Mathf.Clamp(tierIndex, 0, 5);
             if (clamped == 0) return 16f;
             if (clamped == 1) return 8f;
             if (clamped == 2) return 4f;
-            return 2f;
+            if (clamped == 3) return 2f;
+            if (clamped == 4) return 1f;
+            return 0.5f;
         }
 
         private static int DefaultUpgradeCost(int stepIndex)
         {
             if (stepIndex == 0) return 10;
-            if (stepIndex == 1) return 100;
-            return 1000;
+            if (stepIndex == 1) return 50;
+            if (stepIndex == 2) return 250;
+            if (stepIndex == 3) return 1250;
+            return 6000;
         }
     }
 }
