@@ -23,9 +23,27 @@ public class RocketLauncher : MonoBehaviour
     [SerializeField]
     private IntSO _rocketsLaunchedSO;
 
+    
+    [SerializeField] private bool _autoLaunch = true;
+    private float _launchInterval = 0.1f; // 10 rockets per second
+    private float _timer = 0f;
+    
     void Awake()
     {
         _rocketsLaunchedSO.Value = 0;        
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _timer += Time.deltaTime;
+            while (_timer >= _launchInterval)
+            {
+                TriggerEvent();
+                _timer -= _launchInterval;
+            }
+        }
     }
 
     void OnEnable()
@@ -43,6 +61,7 @@ public class RocketLauncher : MonoBehaviour
     {
         _launchRocket.RaiseEvent();
     }
+    
     void LaunchRocket()
     {
         Transform launchSite = _launchSites[UnityEngine.Random.Range(0, _launchSites.Count)];

@@ -14909,6 +14909,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8426564122257437541, guid: 9c9693bdd20d1fd439b8ec51d6fa74de, type: 3}
+      propertyPath: _resources._steelPlate._amount
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8440446609343885077, guid: 9c9693bdd20d1fd439b8ec51d6fa74de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

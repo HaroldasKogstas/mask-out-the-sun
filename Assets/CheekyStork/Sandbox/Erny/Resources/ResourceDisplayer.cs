@@ -1,3 +1,4 @@
+using System;
 using CheekyStork.ScriptableVariables;
 using TMPro;
 using UnityEngine;
@@ -25,7 +26,10 @@ public class ResourceDisplayer : MonoBehaviour
         SetupVisuals();
 
         _valueToDisplay.OnValueChanged += OnValueChanged;        
+    }
 
+    private void Start()
+    {
         OnValueChanged();
     }
 

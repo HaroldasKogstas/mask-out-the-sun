@@ -27,7 +27,7 @@ public sealed class ResourceManager : MonoBehaviour
     
     private void AnnounceResourceChange()
     {
-        Debug.Log($"Resource Change Announced: Iron={_resources[ResourceType.Iron]}, Tungsten={_resources[ResourceType.Tungsten]}, Coal={_resources[ResourceType.Coal]}, ResearchData={_resources[ResourceType.ResearchData]}, SurveyData={_resources[ResourceType.SurveyData]}, SteelPlate={_resources[ResourceType.SteelPlate]}, TungstenPlate={_resources[ResourceType.TungstenPlate]}");
+        // Debug.Log($"Resource Change Announced: Iron={_resources[ResourceType.Iron]}, Tungsten={_resources[ResourceType.Tungsten]}, Coal={_resources[ResourceType.Coal]}, ResearchData={_resources[ResourceType.ResearchData]}, SurveyData={_resources[ResourceType.SurveyData]}, SteelPlate={_resources[ResourceType.SteelPlate]}, TungstenPlate={_resources[ResourceType.TungstenPlate]}");
         _ironSO.Value = _resources[ResourceType.Iron];
         _tungstenSO.Value = _resources[ResourceType.Tungsten];
         _coalSO.Value = _resources[ResourceType.Coal];
@@ -55,6 +55,11 @@ public sealed class ResourceManager : MonoBehaviour
         }
         
         Load();
+    }
+
+    private void Start()
+    {
+        AnnounceResourceChange();
     }
 
     private void Update()
