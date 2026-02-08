@@ -1,36 +1,28 @@
 using System;
 using UnityEngine;
 
-public sealed class ForceSixteenNineResolution : MonoBehaviour
+public sealed class ForceHighestSixteenNineResolution : MonoBehaviour
 {
-    [Header("Preference")]
-    [SerializeField]
-    private int _preferredHeight = 1080;
-
     [SerializeField]
     private FullScreenMode _fullScreenMode = FullScreenMode.FullScreenWindow;
 
     [SerializeField]
-    private int _refreshRateHz = 0; // 0 = keep current / default
+    private int _refreshRateHz = 0; // 0 = best available / default
 
-    [Header("Behavior")]
     [SerializeField]
-    private bool _reapplyIfChanged = true;
+    private bool _reapplyIfChanged = false;
 
     [SerializeField]
     private float _checkIntervalSeconds = 0.5f;
 
-    private const float TargetAspect = 16.0f / 9.0f;
-
     private int _appliedWidth;
     private int _appliedHeight;
     private FullScreenMode _appliedMode;
-
     private float _nextCheckTime;
 
     private void Awake()
     {
-        ApplyBestSixteenNine();
+        ApplyHighestSixteenNine();
     }
 
     private void Update()
@@ -51,49 +43,41 @@ public sealed class ForceSixteenNineResolution : MonoBehaviour
             Screen.height != _appliedHeight ||
             Screen.fullScreenMode != _appliedMode)
         {
-            ApplyBestSixteenNine();
+            ApplyHighestSixteenNine();
         }
     }
 
-    private void ApplyBestSixteenNine()
+    private void ApplyHighestSixteenNine()
     {
-        Resolution best = FindBestSupportedSixteenNine(_preferredHeight);
+        Resolution best = FindHighestSupportedSixteenNine();
 
-        int width = best.width;
-        int height = best.height;
+        Screen.SetResolution(best.width, best.height, _fullScreenMode, ResolveRefreshRate(best));
 
-        Screen.SetResolution(width, height, _fullScreenMode, ResolveRefreshRate(best));
-
-        _appliedWidth = width;
-        _appliedHeight = height;
+        _appliedWidth = best.width;
+        _appliedHeight = best.height;
         _appliedMode = _fullScreenMode;
     }
 
-    private static Resolution FindBestSupportedSixteenNine(int preferredHeight)
+    private static Resolution FindHighestSupportedSixteenNine()
     {
         Resolution[] resolutions = Screen.resolutions;
 
         if (resolutions == null || resolutions.Length == 0)
         {
-            // Fallback if Unity can't enumerate (rare, but possible).
             return new Resolution
             {
                 width = 1920,
                 height = 1080,
+#if UNITY_2022_2_OR_NEWER
                 refreshRateRatio = new RefreshRate { numerator = 60, denominator = 1 }
+#endif
             };
         }
 
         Resolution best = default;
         bool found = false;
 
-        int preferredWidth = Mathf.RoundToInt(preferredHeight * TargetAspect);
-
-        // Choose:
-        // 1) Closest height to preferred
-        // 2) Then closest width to preferred
-        // 3) Then highest refresh rate
-        int bestScore = int.MaxValue;
+        int bestPixels = -1;
         int bestRefresh = -1;
 
         for (int i = 0; i < resolutions.Length; i++)
@@ -105,20 +89,16 @@ public sealed class ForceSixteenNineResolution : MonoBehaviour
                 continue;
             }
 
-            int dh = Mathf.Abs(r.height - preferredHeight);
-            int dw = Mathf.Abs(r.width - preferredWidth);
-
-            int score = (dh * 100000) + dw; // heavily weight matching height
-
+            int pixels = r.width * r.height;
             int refresh = GetRefreshRateHz(r);
 
             if (!found ||
-                score < bestScore ||
-                (score == bestScore && refresh > bestRefresh))
+                pixels > bestPixels ||
+                (pixels == bestPixels && refresh > bestRefresh))
             {
                 found = true;
                 best = r;
-                bestScore = score;
+                bestPixels = pixels;
                 bestRefresh = refresh;
             }
         }
@@ -128,33 +108,30 @@ public sealed class ForceSixteenNineResolution : MonoBehaviour
             return best;
         }
 
-        // If no exact 16:9 mode exists, pick closest aspect mode to 16:9.
-        float bestAspectDiff = float.MaxValue;
-        int bestPixels = -1;
+        // If literally no 16:9 exists, fall back to the highest pixel count overall.
+        Resolution fallback = resolutions[0];
+        int fallbackPixels = fallback.width * fallback.height;
+        int fallbackRefresh = GetRefreshRateHz(fallback);
 
-        for (int i = 0; i < resolutions.Length; i++)
+        for (int i = 1; i < resolutions.Length; i++)
         {
             Resolution r = resolutions[i];
-            float aspect = (float)r.width / (float)r.height;
-            float diff = Mathf.Abs(aspect - TargetAspect);
-
             int pixels = r.width * r.height;
+            int refresh = GetRefreshRateHz(r);
 
-            if (diff < bestAspectDiff || (Mathf.Approximately(diff, bestAspectDiff) && pixels > bestPixels))
+            if (pixels > fallbackPixels || (pixels == fallbackPixels && refresh > fallbackRefresh))
             {
-                best = r;
-                bestAspectDiff = diff;
-                bestPixels = pixels;
+                fallback = r;
+                fallbackPixels = pixels;
+                fallbackRefresh = refresh;
             }
         }
 
-        return best;
+        return fallback;
     }
 
     private static bool IsSixteenNine(int width, int height)
     {
-        // Exact integer ratio check: width/height == 16/9
-        // i.e., width * 9 == height * 16
         return (width * 9) == (height * 16);
     }
 

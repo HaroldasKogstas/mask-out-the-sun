@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tier 5 -     6000
+  m_text: Tier 5 -     2500
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7929c4c94dbf35f4ab4020fd6fe03f88, type: 2}
   m_sharedMaterial: {fileID: 1026733605229919624, guid: 7929c4c94dbf35f4ab4020fd6fe03f88, type: 2}
@@ -15344,7 +15344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8426564122257437541, guid: 9c9693bdd20d1fd439b8ec51d6fa74de, type: 3}
       propertyPath: _resources._steelPlate._amount
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8440446609343885077, guid: 9c9693bdd20d1fd439b8ec51d6fa74de, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16643,7 +16643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d8d65abc15d11419d40e34b08515f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ForceSixteenNineResolution
-  _preferredHeight: 1080
   _fullScreenMode: 1
   _refreshRateHz: 0
   _reapplyIfChanged: 1
@@ -17571,7 +17570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tier 4 -     1250
+  m_text: Tier 4 -     1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7929c4c94dbf35f4ab4020fd6fe03f88, type: 2}
   m_sharedMaterial: {fileID: 1026733605229919624, guid: 7929c4c94dbf35f4ab4020fd6fe03f88, type: 2}

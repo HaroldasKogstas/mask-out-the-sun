@@ -37,7 +37,7 @@ MonoBehaviour:
     - 3
     - 1.8
     - 1
-    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e8030000c4090000
   - _type: 1
     _buildSteelPlateCost: 10
     _actionSecondsByTier:
@@ -47,7 +47,7 @@ MonoBehaviour:
     - 3
     - 1.8
     - 1
-    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e8030000c4090000
   - _type: 2
     _buildSteelPlateCost: 10
     _actionSecondsByTier:
@@ -57,7 +57,7 @@ MonoBehaviour:
     - 3
     - 1.8
     - 1
-    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e8030000c4090000
   - _type: 3
     _buildSteelPlateCost: 10
     _actionSecondsByTier:
@@ -67,7 +67,7 @@ MonoBehaviour:
     - 3
     - 1.8
     - 1
-    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e8030000c4090000
   - _type: 4
     _buildSteelPlateCost: 10
     _actionSecondsByTier:
@@ -77,4 +77,4 @@ MonoBehaviour:
     - 3
     - 1.8
     - 1
-    _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
+    _upgradeResearchCostByStep: 0a00000032000000fa000000e8030000c4090000
