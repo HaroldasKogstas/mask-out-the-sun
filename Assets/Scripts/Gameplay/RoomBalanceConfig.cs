@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CheekyStork.Logging;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,6 +19,11 @@ public sealed class RoomBalanceConfig : ScriptableObject
     [SerializeField]
     [Min(1f)]
     private float _unlockMultiplier = 1.2f;
+
+    [Header("Building cost scaling")]
+    [SerializeField]
+    [Min(0f)]
+    private float _buildCostMultiplier = 1.15f;
 
     [Header("Recipes (all adjustable)")]
     [SerializeField]
@@ -59,16 +65,17 @@ public sealed class RoomBalanceConfig : ScriptableObject
     [SerializeField]
     [Min(0)]
     private int _assemblerTungstenPlateCost = 100;
-    
+
     [SerializeField]
     [Min(0)]
     private int _assemblerSteelPlateCost = 100;
-    
 
     [Header("Per-room balance")]
     [SerializeField]
     private List<RoomTypeBalance> _balances = new List<RoomTypeBalance>();
 
+    
+    public List<RoomTypeBalance> Balances => _balances;
     public int FreeRoomsCount => _freeRoomsCount;
 
     public int GetUnlockCostSurveyData(int currentlyUnlockedRoomsCount)
@@ -82,6 +89,30 @@ public sealed class RoomBalanceConfig : ScriptableObject
         int index = extraUnlockedCount - 1; // first extra room
         float raw = _unlockBaseSurveyCost * Mathf.Pow(_unlockMultiplier, index);
         return Mathf.RoundToInt(raw);
+    }
+
+    public int GetBuildCostSteelPlates(int baseBuildSteelPlateCost, RoomUnlockManager unlockManager)
+    {
+        int baseCost = Mathf.Max(0, baseBuildSteelPlateCost);
+        if (baseCost == 0)
+        { 
+            return 0;
+        }
+
+        if (unlockManager == null)
+        {
+            return baseCost;
+        }
+
+        int builtRoomsCount = Mathf.Max(0, unlockManager.UnlockedRoomsCount);
+        int extraBuiltCount = Mathf.Max(0, builtRoomsCount - _freeRoomsCount);
+        if (extraBuiltCount <= 0)
+        { 
+            return baseCost;
+        }
+
+        float raw = baseCost * Mathf.Pow(_buildCostMultiplier, extraBuiltCount);
+        return Mathf.Max(0, Mathf.RoundToInt(raw));
     }
 
     public int MinerOutputAmount => _minerOutputAmount;
@@ -99,7 +130,7 @@ public sealed class RoomBalanceConfig : ScriptableObject
     public int AssemblerCoalCost => _assemblerCoalCost;
     public int AssemblerTungstenPlateCost => _assemblerTungstenPlateCost;
     public int AssemblerSteelPlateCost => _assemblerSteelPlateCost;
-    
+
     public RoomTypeBalance GetBalance(RoomType type)
     {
         for (int i = 0; i < _balances.Count; i++)
@@ -140,6 +171,8 @@ public sealed class RoomBalanceConfig : ScriptableObject
                 _balances.Add(RoomTypeBalance.CreateDefault(types[i]));
             }
         }
+
+        _buildCostMultiplier = Mathf.Max(1f, _buildCostMultiplier);
     }
 
     [Serializable]
@@ -147,7 +180,7 @@ public sealed class RoomBalanceConfig : ScriptableObject
     {
         [SerializeField]
         private RoomType _type;
-
+        
         [Header("Build cost")]
         [SerializeField]
         [Min(0)]

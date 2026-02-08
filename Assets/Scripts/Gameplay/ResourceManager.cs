@@ -41,7 +41,7 @@ public sealed class ResourceManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            UnityEngine.Object.Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
 
@@ -50,12 +50,14 @@ public sealed class ResourceManager : MonoBehaviour
 
         if (_resetProgressOnAwake != null && _resetProgressOnAwake.Value)
         {
+            PlayerPrefs.DeleteKey(SaveKey);
             Save();
             return;
         }
-        
+
         Load();
     }
+
 
     private void Start()
     {

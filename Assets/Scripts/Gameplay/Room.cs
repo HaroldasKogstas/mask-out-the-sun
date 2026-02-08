@@ -71,10 +71,10 @@ public sealed class Room : MonoBehaviour
         }
 
         _underlyingElement = newElement;
-     
+
         return true;
     }
-    
+
     public bool ForceLockState(bool locked)
     {
         _isLocked = locked;
@@ -266,10 +266,13 @@ public sealed class Room : MonoBehaviour
             return false;
         }
 
+        RoomUnlockManager unlockManager = RoomUnlockManager.Instance;
+
         RoomBalanceConfig.RoomTypeBalance balance = _balanceConfig.GetBalance(typeToBuild);
+        int scaledBuildCost = _balanceConfig.GetBuildCostSteelPlates(balance.BuildSteelPlateCost, unlockManager);
 
         ResourceBundle cost = new ResourceBundle();
-        cost[ResourceType.SteelPlate] = balance.BuildSteelPlateCost;
+        cost[ResourceType.SteelPlate] = scaledBuildCost;
 
         if (!manager.TryRemoveResourceBundle(cost))
         {

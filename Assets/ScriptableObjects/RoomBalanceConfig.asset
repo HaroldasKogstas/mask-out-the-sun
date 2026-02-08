@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: RoomBalanceConfig
   m_EditorClassIdentifier: Assembly-CSharp::RoomBalanceConfig
   _freeRoomsCount: 6
-  _unlockBaseSurveyCost: 100
-  _unlockMultiplier: 1.2
+  _unlockBaseSurveyCost: 10
+  _unlockMultiplier: 1.4
+  _buildCostMultiplier: 1.4
   _minerOutputAmount: 10
   _smelterCoalCost: 1
   _smelterMetalCost: 10
@@ -28,7 +29,7 @@ MonoBehaviour:
   _assemblerSteelPlateCost: 100
   _balances:
   - _type: 0
-    _buildSteelPlateCost: 100
+    _buildSteelPlateCost: 10
     _actionSecondsByTier:
     - 16
     - 10
@@ -38,7 +39,7 @@ MonoBehaviour:
     - 1
     _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 1
-    _buildSteelPlateCost: 100
+    _buildSteelPlateCost: 10
     _actionSecondsByTier:
     - 16
     - 10
@@ -48,7 +49,7 @@ MonoBehaviour:
     - 1
     _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 2
-    _buildSteelPlateCost: 100
+    _buildSteelPlateCost: 10
     _actionSecondsByTier:
     - 16
     - 10
@@ -58,7 +59,7 @@ MonoBehaviour:
     - 1
     _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 3
-    _buildSteelPlateCost: 100
+    _buildSteelPlateCost: 10
     _actionSecondsByTier:
     - 16
     - 10
@@ -68,7 +69,7 @@ MonoBehaviour:
     - 1
     _upgradeResearchCostByStep: 0a00000032000000fa000000e204000070170000
   - _type: 4
-    _buildSteelPlateCost: 100
+    _buildSteelPlateCost: 10
     _actionSecondsByTier:
     - 16
     - 10

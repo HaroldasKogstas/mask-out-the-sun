@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ public class CostDisplayer : MonoBehaviour
 
     private int GetCurrentRoomBuildCost()
     {
-        return 10;
+        var minerBalance = _roomBalanceConfig.Balances.FirstOrDefault(b => b.Type == RoomType.Miner);
+        var minerBuildCost = minerBalance.BuildSteelPlateCost;
+        return _roomBalanceConfig.GetBuildCostSteelPlates(minerBuildCost, _roomUnlockManager);
     }
 }
